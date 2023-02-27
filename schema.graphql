@@ -1,0 +1,64 @@
+enum Action {
+  Compounded
+  Relocked
+  ExpiredLocksRemoved
+  Disqualified
+}
+
+interface UserTransaction {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+}
+
+type Compounded implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  amount: BigInt! # uint256
+}
+
+type Relocked implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  amount: BigInt!
+  lockIndex: BigInt!
+}
+
+type ExpiredLocksRemoved implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  unlockable: BigInt!
+  ineligInRdnt: BigInt!
+}
+
+type Disqualified implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  rewardsRemoved: BigInt!
+}
+
+type User @entity {
+  id: ID!
+  compounded: [Compounded!]! @derivedFrom(field: "user")
+  relocked: [Relocked!]! @derivedFrom(field: "user")
+  expiredLocksRemoved: [ExpiredLocksRemoved!]! @derivedFrom(field: "user")
+  disqualified: [Disqualified!]! @derivedFrom(field: "user")
+}

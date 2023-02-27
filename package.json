@@ -1,0 +1,23 @@
+{
+  "name": "radiantgraph",
+  "license": "UNLICENSED",
+  "scripts": {
+    "prepare:arbgoerli": "mustache config/arbgoerli.json src/constants/index.template.ts > src/constants/index.ts && mustache config/arbgoerli.json subgraph.template.yaml > subgraph.arbgoerli.yaml",
+    "codegen:arbgoerli": "graph codegen subgraph.arbgoerli.yaml",
+    "build:arbgoerli": "graph build subgraph.arbgoerli.yaml",
+    "deploy:arbgoerli": "graph deploy --node https://api.thegraph.com/deploy/ sunlightluck/radiantgraph subgraph.arbgoerli.yaml",
+    "auth": "graph auth",
+    "create-local": "graph create --node http://localhost:8020/ sunlightluck/radiantgraph",
+    "remove-local": "graph remove --node http://localhost:8020/ sunlightluck/radiantgraph",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sunlightluck/radiantgraph",
+    "start:node": "rm -rf ./graph_data && docker-compose up -d"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.42.2",
+    "@graphprotocol/graph-ts": "0.29.1",
+    "mustache": "^4.2.0"
+  },
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
+}
