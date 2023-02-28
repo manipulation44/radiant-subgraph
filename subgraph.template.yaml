@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: {{ network }}
+    network: "{{ network }}"
     source:
       address: "{{ multi_fee_distribution_address }}"
       abi: MultiFeeDistribution
@@ -33,7 +33,7 @@ dataSources:
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: {{ network }}
+    network: "{{ network }}"
     source:
       address: "{{ chef_incentives_controller_address }}"
       abi: ChefIncentivesController

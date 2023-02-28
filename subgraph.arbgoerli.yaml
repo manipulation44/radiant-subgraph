@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: arbitrum-goerli
+    network: "421613"
     source:
       address: "0xc35049d85439ac1f1aaF6908a27fAb39bcB3bf96"
       abi: MultiFeeDistribution
@@ -33,7 +33,7 @@ dataSources:
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: arbitrum-goerli
+    network: "421613"
     source:
       address: "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA"
       abi: ChefIncentivesController
