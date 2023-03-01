@@ -1,6 +1,5 @@
 import { Address } from "@graphprotocol/graph-ts";
-import { User } from "../../generated/schema";
-import { BIG_INT_ONE } from "../constants";
+import { User, Asset } from "../../generated/schema";
 
 export function loadUser(address: Address): User {
   let user = User.load(address.toHexString());
@@ -12,4 +11,16 @@ export function loadUser(address: Address): User {
   }
 
   return user as User;
+}
+
+export function loadAsset(address: Address): Asset {
+  let asset = Asset.load(address.toHexString());
+
+  if (!asset) {
+    asset = new Asset(address.toHexString());
+
+    asset.save();
+  }
+
+  return asset as Asset;
 }

@@ -72,13 +72,25 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
         "indexed": false,
         "internalType": "uint256",
-        "name": "newLimit",
+        "name": "usdValue",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isLP",
+        "type": "bool"
       }
     ],
-    "name": "MaxLockWithdrawPerTxnUpdated",
+    "name": "Locked",
     "type": "event"
   },
   {
@@ -305,19 +317,6 @@
   {
     "inputs": [],
     "name": "DEFAULT_LOCK_DURATION",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "DEFAULT_MUTLIPLIER",
     "outputs": [
       {
         "internalType": "uint256",
@@ -892,6 +891,11 @@
         "type": "address"
       },
       {
+        "internalType": "address",
+        "name": "priceProvider",
+        "type": "address"
+      },
+      {
         "internalType": "uint256",
         "name": "_rewardsDuration",
         "type": "uint256"
@@ -914,11 +918,6 @@
       {
         "internalType": "uint256",
         "name": "_vestDuration",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_maxLockWithdrawPerTxn",
         "type": "uint256"
       }
     ],
@@ -1026,19 +1025,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "lockTypesLength",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -1115,19 +1101,6 @@
   {
     "inputs": [],
     "name": "lockedSupplyWithMultiplier",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "maxLockWithdrawPerTxn",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1659,19 +1632,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -1772,9 +1732,19 @@
         "internalType": "address",
         "name": "_address",
         "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_limit",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_ignoreRelock",
+        "type": "bool"
       }
     ],
-    "name": "withdrawExpiredLocksWithoutRelockFor",
+    "name": "withdrawExpiredLocksForWithOptions",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1826,7 +1796,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "vesting",
+        "name": "zapped",
         "type": "uint256"
       }
     ],

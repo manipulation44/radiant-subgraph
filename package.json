@@ -7,10 +7,14 @@
     "build:arbgoerli": "graph build subgraph.arbgoerli.yaml",
     "deploy:arbgoerli": "graph deploy --node https://api.thegraph.com/deploy/ sunlightluck/radiantgraph subgraph.arbgoerli.yaml",
     "auth": "graph auth",
-    "create-local": "graph create --node http://localhost:8020/ sunlightluck/radiantgraph",
-    "remove-local": "graph remove --node http://localhost:8020/ sunlightluck/radiantgraph",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sunlightluck/radiantgraph",
-    "start:node": "rm -rf ./graph_data && docker-compose up -d"
+    "prepare:local": "mustache config/local.json src/constants/index.template.ts > src/constants/index.ts && mustache config/local.json subgraph.template.yaml > subgraph.local.yaml",
+    "codegen:local": "graph codegen subgraph.local.yaml",
+    "build:local": "graph build subgraph.local.yaml",
+    "create:local": "graph create --node http://localhost:8020/ sunlightluck/radiantgraph",
+    "remove:local": "graph remove --node http://localhost:8020/ sunlightluck/radiantgraph",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sunlightluck/radiantgraph subgraph.local.yaml",
+    "start:node": "rm -rf ./graph_data && docker-compose up -d",
+    "stop:node": "docker rm -f postgres ipfs radiant_indexer"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.42.2",

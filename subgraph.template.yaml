@@ -19,6 +19,7 @@ dataSources:
         - Compounded
         - Relocked
         - ExpiredLocksRemoved
+        - Locked
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
@@ -29,6 +30,8 @@ dataSources:
           handler: handleRelocked
         - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
           handler: handleExpiredLocksRemoved
+        - event: Locked(indexed address,uint256,bool)
+          handler: handleLocked
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
@@ -51,3 +54,24 @@ dataSources:
         - event: Disqualified(indexed address,uint256)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
+
+  - kind: ethereum/contract
+    name: MFDstats
+    network: "{{ network }}"
+    source:
+      address: "{{ mfd_stats_address }}"
+      abi: MFDstats
+      startBlock: {{ mfd_stats_start_block }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewTransferAdded
+      abis:
+        - name: MFDstats
+          file: ./abis/MFDstats.json
+      eventHandlers:
+        - event: NewTransferAdded(address,uint256,uint256)
+          handler: handleNewTransferAdded
+      file: ./src/mfd_stats.ts

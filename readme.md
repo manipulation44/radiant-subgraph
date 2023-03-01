@@ -32,9 +32,10 @@ $ yarn deploy:{network}
 ### Setting up local node (for development)
 1. Install docker on local machine https://docs.docker.com/get-docker/)
 2. Run `yarn start:node` 
-3. Build subgraph: `yarn codegen && yarn build`
-4. Create local subgraph: `yarn create-local`
-5. Deploy to local node: `yarn deploy-local`
-6. Subgraph endpoint available at http://localhost:8000/subgraphs/name/sunlightluck/radiantgraph
-7. To open indexer logs: `docker logs radiant_indexer -f 2>&1 | grep --line-buffered -i -E --color "WORD_TO_FILTER"`
-8. To stop the running containers: `docker rm -f postgres ipfs radiant_indexer`
+3. Prepare subgraph: `yarn prepare:local`
+4. Build subgraph: `yarn codegen:local && yarn build:local`
+5. Create local subgraph: `yarn create:local`
+6. Deploy to local node: `yarn deploy:local`
+7. Subgraph endpoint available at http://localhost:8000/subgraphs/name/sunlightluck/radiantgraph
+8. To open indexer logs: `docker logs radiant_indexer -f 2>&1 | grep --line-buffered -i -E --color "WORD_TO_FILTER"`
+9. To stop the running containers: `yarn stop:node`

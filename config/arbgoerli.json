@@ -2,6 +2,8 @@
   "network": "421613",
   "multi_fee_distribution_address": "0xc35049d85439ac1f1aaF6908a27fAb39bcB3bf96",
   "chef_incentives_controller_address": "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA",
+  "mfd_stats_address": "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA",
   "multi_fee_distribution_start_block": 9089481,
-  "chef_incentives_controller_start_block": 9089555 
+  "chef_incentives_controller_start_block": 9089555,
+  "mfd_stats_start_block": 9089555 
 }

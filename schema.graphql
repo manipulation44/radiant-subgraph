@@ -3,6 +3,8 @@ enum Action {
   Relocked
   ExpiredLocksRemoved
   Disqualified
+  Locked
+  NewTransferAdded
 }
 
 interface UserTransaction {
@@ -10,6 +12,14 @@ interface UserTransaction {
   txHash: Bytes!
   action: Action!
   user: User!
+  timestamp: Int!
+}
+
+interface AssetTransaction {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  asset: Asset!
   timestamp: Int!
 }
 
@@ -32,6 +42,28 @@ type Relocked implements UserTransaction @entity {
 
   amount: BigInt!
   lockIndex: BigInt!
+}
+
+type Locked implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  usdValue: BigInt!
+  isLP: Boolean!
+}
+
+type NewTransferAdded implements AssetTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  asset: Asset!
+  timestamp: Int!
+
+  usdValue: BigInt!
+  lpUsdValue: BigInt!
 }
 
 type ExpiredLocksRemoved implements UserTransaction @entity {
@@ -61,4 +93,10 @@ type User @entity {
   relocked: [Relocked!]! @derivedFrom(field: "user")
   expiredLocksRemoved: [ExpiredLocksRemoved!]! @derivedFrom(field: "user")
   disqualified: [Disqualified!]! @derivedFrom(field: "user")
+  locked: [Locked!]! @derivedFrom(field: "user")
+}
+
+type Asset @entity {
+  id: ID!
+  newTransferAdded: [NewTransferAdded!]! @derivedFrom(field: "asset")
 }
