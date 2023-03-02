@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: "421613"
+    network: "arbitrum-goerli"
     source:
       address: "0x60bcdE0D0FC4c470818505e599fe06F744F4D002"
       abi: MultiFeeDistribution
@@ -36,7 +36,7 @@ dataSources:
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: "421613"
+    network: "arbitrum-goerli"
     source:
       address: "0x74BA4260C6d52b76a5fDAd6a77e34c36805d23F5"
       abi: ChefIncentivesController
@@ -57,7 +57,7 @@ dataSources:
 
   - kind: ethereum/contract
     name: MFDstats
-    network: "421613"
+    network: "arbitrum-goerli"
     source:
       address: "0x56Fbf8614962b95EB52E70607F8D6c4BF7F1eAFD"
       abi: MFDstats
