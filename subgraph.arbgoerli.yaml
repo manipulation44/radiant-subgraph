@@ -35,6 +35,36 @@ dataSources:
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
+    name: LPFeeDistribution
+    network: "arbitrum-goerli"
+    source:
+      address: "0x4034b5E48e726E1dc99d81880531eCf8ffd271C4"
+      abi: MultiFeeDistribution
+      startBlock: 9604477
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Compounded
+        - Relocked
+        - ExpiredLocksRemoved
+        - Locked
+      abis:
+        - name: MultiFeeDistribution
+          file: ./abis/MultiFeeDistribution.json
+      eventHandlers:
+        - event: Compounded(indexed address,uint256)
+          handler: handleCompounded
+        - event: Relocked(indexed address,uint256,uint256)
+          handler: handleRelocked
+        - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
+          handler: handleExpiredLocksRemoved
+        - event: Locked(indexed address,uint256,bool)
+          handler: handleLocked
+      file: ./src/multi_fee_distribution.ts
+
+  - kind: ethereum/contract
     name: ChefIncentivesController
     network: "arbitrum-goerli"
     source:
