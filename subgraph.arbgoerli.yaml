@@ -8,9 +8,9 @@ dataSources:
     name: MultiFeeDistribution
     network: "421613"
     source:
-      address: "0xc35049d85439ac1f1aaF6908a27fAb39bcB3bf96"
+      address: "0x60bcdE0D0FC4c470818505e599fe06F744F4D002"
       abi: MultiFeeDistribution
-      startBlock: 9089481
+      startBlock: 9604477
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -19,6 +19,7 @@ dataSources:
         - Compounded
         - Relocked
         - ExpiredLocksRemoved
+        - Locked
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
@@ -29,15 +30,17 @@ dataSources:
           handler: handleRelocked
         - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
           handler: handleExpiredLocksRemoved
+        - event: Locked(indexed address,uint256,bool)
+          handler: handleLocked
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
     name: ChefIncentivesController
     network: "421613"
     source:
-      address: "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA"
+      address: "0x74BA4260C6d52b76a5fDAd6a77e34c36805d23F5"
       abi: ChefIncentivesController
-      startBlock: 9089555
+      startBlock: 9604588
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -51,3 +54,24 @@ dataSources:
         - event: Disqualified(indexed address,uint256)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
+
+  - kind: ethereum/contract
+    name: MFDstats
+    network: "421613"
+    source:
+      address: "0x56Fbf8614962b95EB52E70607F8D6c4BF7F1eAFD"
+      abi: MFDstats
+      startBlock: 9604394
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewTransferAdded
+      abis:
+        - name: MFDstats
+          file: ./abis/MFDstats.json
+      eventHandlers:
+        - event: NewTransferAdded(indexed address,uint256,uint256)
+          handler: handleNewTransferAdded
+      file: ./src/mfd_stats.ts

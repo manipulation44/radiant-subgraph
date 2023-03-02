@@ -1,9 +1,9 @@
 {
   "network": "421613",
-  "multi_fee_distribution_address": "0xc35049d85439ac1f1aaF6908a27fAb39bcB3bf96",
-  "chef_incentives_controller_address": "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA",
-  "mfd_stats_address": "0x10C2DD5a1544c9762A947f7Ee688e864b3B8e0BA",
-  "multi_fee_distribution_start_block": 9089481,
-  "chef_incentives_controller_start_block": 9089555,
-  "mfd_stats_start_block": 9089555 
+  "multi_fee_distribution_address": "0x60bcdE0D0FC4c470818505e599fe06F744F4D002",
+  "chef_incentives_controller_address": "0x74BA4260C6d52b76a5fDAd6a77e34c36805d23F5",
+  "mfd_stats_address": "0x56Fbf8614962b95EB52E70607F8D6c4BF7F1eAFD",
+  "multi_fee_distribution_start_block": 9604477,
+  "chef_incentives_controller_start_block": 9604588,
+  "mfd_stats_start_block": 9604394
 }

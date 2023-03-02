@@ -1,6 +1,6 @@
 import { NewTransferAdded as NewTransferAddedEvent } from "../generated/MFDstats/MFDstats";
 import { NewTransferAdded } from "../generated/schema";
-import { loadUser, loadAsset } from "./entities/user";
+import { loadAsset } from "./entities/asset";
 import { getHistoryEntityId } from "./utils";
 
 export function handleNewTransferAdded(event: NewTransferAddedEvent): void {

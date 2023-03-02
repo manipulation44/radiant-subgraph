@@ -5,7 +5,8 @@ import {
   Locked as LockedEvent,
 } from "../generated/MultiFeeDistribution/MultiFeeDistribution";
 
-import { Compounded, Relocked, ExpiredLocksRemoved, Locked } from "../generated/schema";
+import { Compounded, Relocked, ExpiredLocksRemoved, Locked, TotalLocked } from "../generated/schema";
+import { loadTotalLocked } from "./entities/totalLocked";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
 
@@ -40,6 +41,10 @@ export function handleRelocked(event: RelockedEvent): void {
 
 export function handleLocked(event: LockedEvent): void {
   let user = loadUser(event.params.user);
+  
+  let totalLocked = loadTotalLocked(event.params.isLP.toString());
+  totalLocked.totalLocked = totalLocked.totalLocked.plus(event.params.usdValue);
+  totalLocked.save();
 
   let entity = new Locked(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;

@@ -329,6 +329,19 @@
   },
   {
     "inputs": [],
+    "name": "DEFAULT_LOCK_INDEX",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "HALF",
     "outputs": [
       {
@@ -1386,12 +1399,22 @@
   {
     "inputs": [
       {
-        "internalType": "bool",
-        "name": "_val",
-        "type": "bool"
+        "internalType": "contract IChefIncentivesController",
+        "name": "_controller",
+        "type": "address"
+      },
+      {
+        "internalType": "contract IMiddleFeeDistribution",
+        "name": "_middleFeeDistribution",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasury",
+        "type": "address"
       }
     ],
-    "name": "setAutoCompoundEnabled",
+    "name": "setAddresses",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1405,19 +1428,6 @@
       }
     ],
     "name": "setAutocompound",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_val",
-        "type": "bool"
-      }
-    ],
-    "name": "setBountiesEnabled",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1491,24 +1501,6 @@
   {
     "inputs": [
       {
-        "internalType": "contract IChefIncentivesController",
-        "name": "_controller",
-        "type": "address"
-      },
-      {
-        "internalType": "contract IMiddleFeeDistribution",
-        "name": "_middleFeeDistribution",
-        "type": "address"
-      }
-    ],
-    "name": "setIncentivesControllerAndMiddleFeeDistribution",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_stakingToken",
         "type": "address"
@@ -1559,19 +1551,6 @@
       }
     ],
     "name": "setRelock",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_treasury",
-        "type": "address"
-      }
-    ],
-    "name": "setSTARFLEET_TREASURY",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

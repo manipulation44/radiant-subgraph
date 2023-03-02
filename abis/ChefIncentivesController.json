@@ -436,7 +436,7 @@
     "name": "eligibleDataProvider",
     "outputs": [
       {
-        "internalType": "contract IRewardEligibleDataProvider",
+        "internalType": "contract IEligibilityDataProvider",
         "name": "",
         "type": "address"
       }
@@ -538,7 +538,7 @@
         "type": "address"
       },
       {
-        "internalType": "contract IRewardEligibleDataProvider",
+        "internalType": "contract IEligibilityDataProvider",
         "name": "_eligibleDataProvider",
         "type": "address"
       },

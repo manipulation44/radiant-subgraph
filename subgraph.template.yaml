@@ -72,6 +72,6 @@ dataSources:
         - name: MFDstats
           file: ./abis/MFDstats.json
       eventHandlers:
-        - event: NewTransferAdded(address,uint256,uint256)
+        - event: NewTransferAdded(indexed address,uint256,uint256)
           handler: handleNewTransferAdded
       file: ./src/mfd_stats.ts

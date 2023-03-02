@@ -87,6 +87,11 @@ type Disqualified implements UserTransaction @entity {
   rewardsRemoved: BigInt!
 }
 
+type TotalLocked @entity {
+  id: ID!
+  totalLocked: BigInt!
+}
+
 type User @entity {
   id: ID!
   compounded: [Compounded!]! @derivedFrom(field: "user")
