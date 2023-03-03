@@ -5,7 +5,7 @@
     "prepare:arbgoerli": "mustache config/arbgoerli.json src/constants/index.template.ts > src/constants/index.ts && mustache config/arbgoerli.json subgraph.template.yaml > subgraph.arbgoerli.yaml",
     "codegen:arbgoerli": "graph codegen subgraph.arbgoerli.yaml",
     "build:arbgoerli": "graph build subgraph.arbgoerli.yaml",
-    "deploy:arbgoerli": "graph deploy --node https://api.thegraph.com/deploy/ sunlightluck/radiantgraph subgraph.arbgoerli.yaml",
+    "deploy:arbgoerli": "graph deploy --node https://api.thegraph.com/deploy/ radiantcapitaldevelopment/radiant-arbi-goerli subgraph.arbgoerli.yaml",
     "auth": "graph auth",
     "prepare:local": "mustache config/local.json src/constants/index.template.ts > src/constants/index.ts && mustache config/local.json subgraph.template.yaml > subgraph.local.yaml",
     "codegen:local": "graph codegen subgraph.local.yaml",
