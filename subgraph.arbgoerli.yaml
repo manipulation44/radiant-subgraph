@@ -40,7 +40,7 @@ dataSources:
     source:
       address: "0x4034b5E48e726E1dc99d81880531eCf8ffd271C4"
       abi: MultiFeeDistribution
-      startBlock: 9604477
+      startBlock: 9604452
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

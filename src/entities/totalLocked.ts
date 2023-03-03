@@ -1,3 +1,4 @@
+import { BigInt } from "@graphprotocol/graph-ts";
 import { TotalLocked } from "../../generated/schema";
 
 export function loadTotalLocked(isLP: string): TotalLocked {
@@ -5,6 +6,7 @@ export function loadTotalLocked(isLP: string): TotalLocked {
 
   if (!totalLocked) {
     totalLocked = new TotalLocked(isLP);
+    totalLocked.totalLocked = BigInt.fromI32(0);
 
     totalLocked.save();
   }
