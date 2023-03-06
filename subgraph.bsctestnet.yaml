@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: "arbitrum-goerli"
+    network: "chapel"
     source:
-      address: "0x6b9cd60ec4DE59F596Ee0276Ac4F7413206bCbb5"
+      address: "0x7505E0CF8631bc7aba7417c4525C33c8F0246225"
       abi: MultiFeeDistribution
-      startBlock: 9905463
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -36,11 +36,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: LPFeeDistribution
-    network: "arbitrum-goerli"
+    network: "chapel"
     source:
-      address: "0x69335A41Bc7cc5D4B9aAa7629A969dD5408791f4"
+      address: "0x15d1870E74C51DBf38C78b80E78fb2A391FA4766"
       abi: MultiFeeDistribution
-      startBlock: 9905463
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -66,11 +66,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: "arbitrum-goerli"
+    network: "chapel"
     source:
-      address: "0x437931b95A4eEB8d94CB12a214B7e407ca0dEA01"
+      address: "0xF6639Fe2b8f2B80c622e4B1a98C47Ae81E05D36f"
       abi: ChefIncentivesController
-      startBlock: 9905463
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -87,11 +87,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: MFDstats
-    network: "arbitrum-goerli"
+    network: "chapel"
     source:
-      address: "0x0b271396438Dd553b066Bc669bb057FEc866Db3f"
+      address: "0xD9Ab62c05069BEb7b1c55f938604cD232f54ACA7"
       abi: MFDstats
-      startBlock: 9905463
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
