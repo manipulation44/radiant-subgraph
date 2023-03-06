@@ -92,6 +92,12 @@ type TotalLocked @entity {
   totalLocked: BigInt!
 }
 
+type UsdTransfered @entity {
+  id: ID!
+  totalUsdTransfered: BigInt!
+  totalLpUsdTransfered: BigInt!
+}
+
 type User @entity {
   id: ID!
   compounded: [Compounded!]! @derivedFrom(field: "user")
