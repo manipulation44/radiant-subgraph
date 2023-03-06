@@ -8,7 +8,7 @@ dataSources:
     name: MultiFeeDistribution
     network: "arbitrum-goerli"
     source:
-      address: "0xd5562b9C7Ead9E83dFe264BEF8DfF44e47A72A65"
+      address: "0x6b9cd60ec4DE59F596Ee0276Ac4F7413206bCbb5"
       abi: MultiFeeDistribution
       startBlock: 9881737
     mapping:
@@ -38,7 +38,7 @@ dataSources:
     name: LPFeeDistribution
     network: "arbitrum-goerli"
     source:
-      address: "0x32619080E5ec7d75b646427B375E32Ea7688cE04"
+      address: "0x69335A41Bc7cc5D4B9aAa7629A969dD5408791f4"
       abi: MultiFeeDistribution
       startBlock: 9881737
     mapping:
@@ -68,7 +68,7 @@ dataSources:
     name: ChefIncentivesController
     network: "arbitrum-goerli"
     source:
-      address: "0x4543bDBF95fc4fC2c7125ca0030F05Dca4d02Ce3"
+      address: "0x437931b95A4eEB8d94CB12a214B7e407ca0dEA01"
       abi: ChefIncentivesController
       startBlock: 9881737
     mapping:
@@ -89,7 +89,7 @@ dataSources:
     name: MFDstats
     network: "arbitrum-goerli"
     source:
-      address: "0x67853B18B373DE4149f35dfE3818Eef4025930FE"
+      address: "0x0b271396438Dd553b066Bc669bb057FEc866Db3f"
       abi: MFDstats
       startBlock: 9881737
     mapping:
