@@ -24,3 +24,9 @@ export const MULTI_FEE_DISTRIBUTION_ADDRESS = Address.fromString(
 export const CHEF_INCENTIVES_CONTROLLER_ADDRESS = Address.fromString(
   "{{ chef_incentives_controller_address }}"
 );
+
+export const BETA_TEST_START_TIMESTAMP = parseInt("{{ beta_test_start_timestamp }}");
+
+export const BETA_TEST_PERIOD = parseInt("{{ beta_test_period }}");
+
+export const BETA_TESTERS = ("{{ beta_testers }}").split(",");

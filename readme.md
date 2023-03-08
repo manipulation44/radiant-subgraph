@@ -6,7 +6,7 @@ Subgraph for Radiant-v2 on Arbitrum-goerli
 
 | network     | subgraph |
 | ----------  | :------: | 
-| arb-goerli  | https://thegraph.com/hosted-service/subgraph/sunlightluck/radiantgraph |  
+| arb-goerli  | https://thegraph.com/hosted-service/subgraph/radiantcapitaldevelopment/radiant-arbi-goerli |  
 
 
 
@@ -30,7 +30,7 @@ $ yarn deploy:{network}
 ````
 
 ### Setting up local node (for development)
-1. Install docker on local machine https://docs.docker.com/get-docker/)
+1. Install docker on local machine https://docs.docker.com/get-docker/
 2. Run `yarn start:node` 
 3. Prepare subgraph: `yarn prepare:local`
 4. Build subgraph: `yarn codegen:local && yarn build:local`
