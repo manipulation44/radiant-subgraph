@@ -112,7 +112,8 @@ type Asset @entity {
   newTransferAdded: [NewTransferAdded!]! @derivedFrom(field: "asset")
 }
 
-type BetaTester @entity {
+type LpLocker @entity {
   id: ID!
   lpLocked: BigInt!
+  isBetaTesterInTestPeriod: Boolean!
 }

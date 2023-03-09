@@ -6,11 +6,11 @@ import {
 } from "../generated/MultiFeeDistribution/MultiFeeDistribution";
 
 import { Compounded, Relocked, ExpiredLocksRemoved, Locked, TotalLocked } from "../generated/schema";
-import { loadBetaTester } from "./entities/betaTester";
 import { loadTotalLocked } from "./entities/totalLocked";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
 import { BETA_TEST_START_TIMESTAMP, BETA_TEST_PERIOD, BETA_TESTERS } from "./constants";
+import { loadLpLocker } from "./entities/lpLocker";
 
 export function handleCompounded(event: CompoundedEvent): void {
   let user = loadUser(event.params._user);
@@ -47,15 +47,15 @@ export function handleLocked(event: LockedEvent): void {
   let totalLocked = loadTotalLocked(event.params.isLP.toString());
   totalLocked.totalLocked = totalLocked.totalLocked.plus(event.params.usdValue);
   totalLocked.save();
-
-  const timestamp = event.block.timestamp.toI32();
-  const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
-  if(isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD && event.params.isLP) {
-    let betaTester = loadBetaTester(event.params.user);
-    betaTester.lpLocked = betaTester.lpLocked.plus(event.params.usdValue);
-    betaTester.save();
+  
+  if(event.params.isLP){
+    const timestamp = event.block.timestamp.toI32();
+    const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
+    let lpLocker = loadLpLocker(event.params.user);
+    lpLocker.lpLocked = lpLocker.lpLocked.plus(event.params.usdValue);
+    lpLocker.isBetaTesterInTestPeriod = isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD;
+    lpLocker.save();
   }
-
 
   let entity = new Locked(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;
