@@ -30,7 +30,7 @@ dataSources:
           handler: handleRelocked
         - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
           handler: handleExpiredLocksRemoved
-        - event: Locked(indexed address,uint256,bool)
+        - event: Locked(indexed address,uint256,uint256,bool)
           handler: handleLocked
       file: ./src/multi_fee_distribution.ts
 
@@ -60,7 +60,7 @@ dataSources:
           handler: handleRelocked
         - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
           handler: handleExpiredLocksRemoved
-        - event: Locked(indexed address,uint256,bool)
+        - event: Locked(indexed address,uint256,uint256,bool)
           handler: handleLocked
       file: ./src/multi_fee_distribution.ts
 
