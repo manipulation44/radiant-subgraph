@@ -8,9 +8,9 @@ dataSources:
     name: MultiFeeDistribution
     network: "arbitrum-goerli"
     source:
-      address: "0x6b9cd60ec4DE59F596Ee0276Ac4F7413206bCbb5"
+      address: "0xa70C0E3cEea9AD9593ef15824c1663f8A8451f1f"
       abi: MultiFeeDistribution
-      startBlock: 9905463
+      startBlock: 10985464
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,9 +35,9 @@ dataSources:
     name: LPFeeDistribution
     network: "arbitrum-goerli"
     source:
-      address: "0x69335A41Bc7cc5D4B9aAa7629A969dD5408791f4"
+      address: "0xA1A3fBcd8FaB38cA1c5a07A41cC47b54B04B1d50"
       abi: MultiFeeDistribution
-      startBlock: 9905463
+      startBlock: 10985464
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -62,9 +62,9 @@ dataSources:
     name: ChefIncentivesController
     network: "arbitrum-goerli"
     source:
-      address: "0x437931b95A4eEB8d94CB12a214B7e407ca0dEA01"
+      address: "0xBdb5D78886206CA0b1fe011EeDdc3D1b9021eF12"
       abi: ChefIncentivesController
-      startBlock: 9905463
+      startBlock: 10985464
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -83,9 +83,9 @@ dataSources:
     name: MFDstats
     network: "arbitrum-goerli"
     source:
-      address: "0x0b271396438Dd553b066Bc669bb057FEc866Db3f"
+      address: "0x20F604C51E8c2671b6f2cbb6d9c8E5844d796b95"
       abi: MFDstats
-      startBlock: 9905463
+      startBlock: 10985464
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

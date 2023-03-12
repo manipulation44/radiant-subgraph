@@ -1,9 +1,9 @@
 {
   "network": "arbitrum-goerli",
-  "multi_fee_distribution_address": "0x2C44092684b6fc2B35bC86bb3837eef5E5C923FD",
-  "lp_fee_distribution_address": "0x91ddDC6CcC6E174e5634B9DAa7261E99E34E5f2B",
-  "chef_incentives_controller_address": "0x0023f20CA2192BAF398Cbd17c8Bc8Aa6A28DaE78",
-  "mfd_stats_address": "0xEED3e2DdB382DA330c48F76273f07DDB5E065e7c",
+  "multi_fee_distribution_address": "0xa70C0E3cEea9AD9593ef15824c1663f8A8451f1f",
+  "lp_fee_distribution_address": "0xA1A3fBcd8FaB38cA1c5a07A41cC47b54B04B1d50",
+  "chef_incentives_controller_address": "0xBdb5D78886206CA0b1fe011EeDdc3D1b9021eF12",
+  "mfd_stats_address": "0x20F604C51E8c2671b6f2cbb6d9c8E5844d796b95",
   "multi_fee_distribution_start_block": 10985464,
   "lp_fee_distribution_start_block": 10985464,
   "chef_incentives_controller_start_block": 10985464,
