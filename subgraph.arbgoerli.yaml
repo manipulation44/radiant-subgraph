@@ -16,22 +16,19 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Compounded
         - Relocked
-        - ExpiredLocksRemoved
         - Locked
+        - Withdrawn
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
       eventHandlers:
-        - event: Compounded(indexed address,uint256)
-          handler: handleCompounded
         - event: Relocked(indexed address,uint256,uint256)
           handler: handleRelocked
-        - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
-          handler: handleExpiredLocksRemoved
-        - event: Locked(indexed address,uint256,bool)
+        - event: Locked(indexed address,uint256,uint256,bool)
           handler: handleLocked
+        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
+          handler: handleWithdrawn
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
@@ -46,22 +43,19 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Compounded
         - Relocked
-        - ExpiredLocksRemoved
         - Locked
+        - Withdrawn
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
       eventHandlers:
-        - event: Compounded(indexed address,uint256)
-          handler: handleCompounded
         - event: Relocked(indexed address,uint256,uint256)
           handler: handleRelocked
-        - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
-          handler: handleExpiredLocksRemoved
-        - event: Locked(indexed address,uint256,bool)
+        - event: Locked(indexed address,uint256,uint256,bool)
           handler: handleLocked
+        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
+          handler: handleWithdrawn
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract

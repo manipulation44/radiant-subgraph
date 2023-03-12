@@ -29,4 +29,4 @@ export const BETA_TEST_START_TIMESTAMP = parseInt("{{ beta_test_start_timestamp 
 
 export const BETA_TEST_PERIOD = parseInt("{{ beta_test_period }}");
 
-export const BETA_TESTERS = ("{{ beta_testers }}").split(",");
+export const BETA_TESTERS = "{{ beta_testers }}".split(",");

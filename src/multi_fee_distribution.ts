@@ -1,30 +1,14 @@
 import {
-  Compounded as CompoundedEvent,
   Relocked as RelockedEvent,
-  ExpiredLocksRemoved as ExpiredLocksRemovedEvent,
   Locked as LockedEvent,
+  Withdrawn as WithdrawEvent
 } from "../generated/MultiFeeDistribution/MultiFeeDistribution";
 
-import { Compounded, Relocked, ExpiredLocksRemoved, Locked, TotalLocked } from "../generated/schema";
-import { loadTotalLocked } from "./entities/totalLocked";
+import { Relocked, Locked, Withdrawn } from "../generated/schema";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
 import { BETA_TEST_START_TIMESTAMP, BETA_TEST_PERIOD, BETA_TESTERS } from "./constants";
 import { loadLpLocker } from "./entities/lpLocker";
-
-export function handleCompounded(event: CompoundedEvent): void {
-  let user = loadUser(event.params._user);
-
-  let entity = new Compounded(getHistoryEntityId(event));
-  entity.txHash = event.transaction.hash;
-  entity.action = "Compounded";
-  entity.user = user.id;
-  entity.timestamp = event.block.timestamp.toI32();
-
-  entity.amount = event.params._amount;
-
-  entity.save();
-}
 
 export function handleRelocked(event: RelockedEvent): void {
   let user = loadUser(event.params.user);
@@ -44,15 +28,11 @@ export function handleRelocked(event: RelockedEvent): void {
 export function handleLocked(event: LockedEvent): void {
   let user = loadUser(event.params.user);
   
-  let totalLocked = loadTotalLocked(event.params.isLP.toString());
-  totalLocked.totalLocked = totalLocked.totalLocked.plus(event.params.usdValue);
-  totalLocked.save();
-  
   if(event.params.isLP){
     const timestamp = event.block.timestamp.toI32();
     const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
     let lpLocker = loadLpLocker(event.params.user);
-    lpLocker.lpLocked = lpLocker.lpLocked.plus(event.params.usdValue);
+    lpLocker.lockedBalance = event.params.lockedBalance;
     lpLocker.isBetaTesterInTestPeriod = isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD;
     lpLocker.save();
   }
@@ -63,25 +43,36 @@ export function handleLocked(event: LockedEvent): void {
   entity.user = user.id;
   entity.timestamp = event.block.timestamp.toI32();
 
-  entity.usdValue = event.params.usdValue;
+  entity.amount = event.params.amount;
   entity.isLP = event.params.isLP;
+  entity.lockedBalance = event.params.lockedBalance;
 
   entity.save();
 }
 
-export function handleExpiredLocksRemoved(
-  event: ExpiredLocksRemovedEvent
-): void {
-  let user = loadUser(event.params._user);
+export function handleWithdrawn(event: WithdrawEvent): void {
+  let user = loadUser(event.params.user);
+  
+  if(event.params.isLP){
+    const timestamp = event.block.timestamp.toI32();
+    const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
+    let lpLocker = loadLpLocker(event.params.user);
+    lpLocker.lockedBalance = event.params.lockedBalance;
+    lpLocker.isBetaTesterInTestPeriod = isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD;
+    lpLocker.save();
+  }
 
-  let entity = new ExpiredLocksRemoved(getHistoryEntityId(event));
+  let entity = new Withdrawn(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;
-  entity.action = "ExpiredLocksRemoved";
+  entity.action = "Withdrawn";
   entity.user = user.id;
   entity.timestamp = event.block.timestamp.toI32();
 
-  entity.unlockable = event.params.unlockable;
-  entity.ineligInRdnt = event.params.ineligInRdnt;
+  entity.receivedAmount = event.params.receivedAmount;
+  entity.penalty = event.params.penalty;
+  entity.burn = event.params.burn;
+  entity.isLP = event.params.isLP;
+  entity.lockedBalance = event.params.lockedBalance;
 
   entity.save();
 }

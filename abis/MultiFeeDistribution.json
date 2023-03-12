@@ -3,19 +3,19 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
-        "name": "_user",
+        "name": "previousAdmin",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
       }
     ],
-    "name": "Compounded",
+    "name": "AdminChanged",
     "type": "event"
   },
   {
@@ -24,24 +24,103 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_user",
+        "name": "beacon",
+        "type": "address"
+      }
+    ],
+    "name": "BeaconUpgraded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      }
+    ],
+    "name": "Upgraded",
+    "type": "event"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "fallback"
+  },
+  {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "admin_",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "changeAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "implementation",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "implementation_",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
+        "type": "address"
+      }
+    ],
+    "name": "upgradeTo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newImplementation",
         "type": "address"
       },
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "unlockable",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "ineligInRdnt",
-        "type": "uint256"
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
       }
     ],
-    "name": "ExpiredLocksRemoved",
-    "type": "event"
+    "name": "upgradeToAndCall",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   },
   {
     "anonymous": false,
@@ -80,7 +159,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "usdValue",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "lockedBalance",
         "type": "uint256"
       },
       {
@@ -160,19 +245,6 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "reward",
-        "type": "uint256"
-      }
-    ],
-    "name": "RewardAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
         "indexed": true,
         "internalType": "address",
         "name": "user",
@@ -225,38 +297,13 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "amount",
+        "name": "receivedAmount",
         "type": "uint256"
       },
       {
         "indexed": false,
-        "internalType": "bool",
-        "name": "locked",
-        "type": "bool"
-      }
-    ],
-    "name": "Staked",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "token",
-        "type": "address"
-      },
-      {
-        "indexed": false,
         "internalType": "uint256",
-        "name": "receivedAmount",
+        "name": "lockedBalance",
         "type": "uint256"
       },
       {
@@ -270,36 +317,16 @@
         "internalType": "uint256",
         "name": "burn",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isLP",
+        "type": "bool"
       }
     ],
     "name": "Withdrawn",
     "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "AC_ENABLED",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "BOUNTY_ENABLED",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
   },
   {
     "inputs": [],
@@ -348,6 +375,19 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "PriceProvider",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -435,11 +475,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_bounty",
+        "name": "_rewardToken",
         "type": "address"
       }
     ],
-    "name": "addBountyContract",
+    "name": "addReward",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -448,11 +488,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardToken",
+        "name": "_rewardConverter",
         "type": "address"
       }
     ],
-    "name": "addReward",
+    "name": "addRewardConverter",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -497,76 +537,6 @@
   },
   {
     "inputs": [],
-    "name": "autocompoundFee",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "autocompoundThreshold",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "baseToken",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "bountyForUser",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "address",
-            "name": "token",
-            "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "internalType": "struct IFeeDistribution.RewardData[]",
-        "name": "bounties",
-        "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "bountyManager",
     "outputs": [
       {
@@ -594,11 +564,6 @@
     "name": "claimBounty",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "bountyAmt",
-        "type": "uint256"
-      },
-      {
         "internalType": "bool",
         "name": "issueBaseBounty",
         "type": "bool"
@@ -611,23 +576,12 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_user",
+        "name": "onBehalf",
         "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_execute",
-        "type": "bool"
       }
     ],
-    "name": "claimCompound",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokensOut",
-        "type": "uint256"
-      }
-    ],
+    "name": "claimFromConverter",
+    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -660,38 +614,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "compoundAcceptableSlippage",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "convertPendingRewardsToWeth",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "wethOut",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -1126,19 +1048,6 @@
   },
   {
     "inputs": [],
-    "name": "mfdHelper",
-    "outputs": [
-      {
-        "internalType": "contract IMFDHelper",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "middleFeeDistribution",
     "outputs": [
       {
@@ -1213,19 +1122,6 @@
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "quoteSelfCompound",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokensOut",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -1380,25 +1276,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_quote",
-        "type": "uint256"
-      }
-    ],
-    "name": "selfCompound",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokensOut",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "contract IChefIncentivesController",
         "name": "_controller",
         "type": "address"
@@ -1436,51 +1313,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_baseToken",
+        "name": "_bounty",
         "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_uniRouter",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_bountyManager",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_mfdHelper",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_bountyEnabled",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "_acEnabled",
-        "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_autocompoundThreshold",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_autocompoundFee",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_compoundAcceptableSlippage",
-        "type": "uint256"
       }
     ],
-    "name": "setCompoundOptions",
+    "name": "setBountyManager",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1621,19 +1458,6 @@
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "uniRouter",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -1781,5 +1605,26 @@
     ],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_logic",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "admin_",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_data",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "constructor"
   }
 ]

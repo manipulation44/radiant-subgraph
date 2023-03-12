@@ -1,9 +1,8 @@
 enum Action {
-  Compounded
   Relocked
-  ExpiredLocksRemoved
   Disqualified
   Locked
+  Withdrawn
   NewTransferAdded
 }
 
@@ -21,16 +20,6 @@ interface AssetTransaction {
   action: Action!
   asset: Asset!
   timestamp: Int!
-}
-
-type Compounded implements UserTransaction @entity {
-  id: ID!
-  txHash: Bytes!
-  action: Action!
-  user: User!
-  timestamp: Int!
-
-  amount: BigInt! # uint256
 }
 
 type Relocked implements UserTransaction @entity {
@@ -51,7 +40,22 @@ type Locked implements UserTransaction @entity {
   user: User!
   timestamp: Int!
 
-  usdValue: BigInt!
+  amount: BigInt!
+  lockedBalance: BigInt!
+  isLP: Boolean!
+}
+
+type Withdrawn implements UserTransaction @entity {
+  id: ID!
+  txHash: Bytes!
+  action: Action!
+  user: User!
+  timestamp: Int!
+
+  receivedAmount: BigInt!
+  lockedBalance: BigInt!
+  penalty: BigInt!
+  burn: BigInt!
   isLP: Boolean!
 }
 
@@ -66,17 +70,6 @@ type NewTransferAdded implements AssetTransaction @entity {
   lpUsdValue: BigInt!
 }
 
-type ExpiredLocksRemoved implements UserTransaction @entity {
-  id: ID!
-  txHash: Bytes!
-  action: Action!
-  user: User!
-  timestamp: Int!
-
-  unlockable: BigInt!
-  ineligInRdnt: BigInt!
-}
-
 type Disqualified implements UserTransaction @entity {
   id: ID!
   txHash: Bytes!
@@ -87,11 +80,6 @@ type Disqualified implements UserTransaction @entity {
   rewardsRemoved: BigInt!
 }
 
-type TotalLocked @entity {
-  id: ID!
-  totalLocked: BigInt!
-}
-
 type UsdTransfered @entity {
   id: ID!
   totalUsdTransfered: BigInt!
@@ -100,11 +88,10 @@ type UsdTransfered @entity {
 
 type User @entity {
   id: ID!
-  compounded: [Compounded!]! @derivedFrom(field: "user")
   relocked: [Relocked!]! @derivedFrom(field: "user")
-  expiredLocksRemoved: [ExpiredLocksRemoved!]! @derivedFrom(field: "user")
   disqualified: [Disqualified!]! @derivedFrom(field: "user")
   locked: [Locked!]! @derivedFrom(field: "user")
+  withdrawn: [Withdrawn!]! @derivedFrom(field: "user")
 }
 
 type Asset @entity {
@@ -114,6 +101,6 @@ type Asset @entity {
 
 type LpLocker @entity {
   id: ID!
-  lpLocked: BigInt!
+  lockedBalance: BigInt!
   isBetaTesterInTestPeriod: Boolean!
 }
