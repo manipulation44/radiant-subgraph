@@ -80,11 +80,11 @@ dataSources:
       file: ./src/chef_incentives_controller.ts
 
   - kind: ethereum/contract
-    name: MFDstats
+    name: MiddleFeeDistribution
     network: "arbitrum-one"
     source:
-      address: "0xcEa4c3e2cc3FA6d4CbE056c65A1E51E393Aa757a"
-      abi: MFDstats
+      address: "0x6E50bD46E1DF30fA3baC50964bEbDA904B5991Ca"
+      abi: MiddleFeeDistribution
       startBlock: 69925493
     mapping:
       kind: ethereum/events
@@ -93,9 +93,9 @@ dataSources:
       entities:
         - NewTransferAdded
       abis:
-        - name: MFDstats
-          file: ./abis/MFDstats.json
+        - name: MiddleFeeDistribution
+          file: ./abis/MiddleFeeDistribution.json
       eventHandlers:
         - event: NewTransferAdded(indexed address,uint256,uint256)
           handler: handleNewTransferAdded
-      file: ./src/mfd_stats.ts
+      file: ./src/middle_fee_distribution.ts

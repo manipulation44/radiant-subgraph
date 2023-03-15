@@ -80,12 +80,12 @@ dataSources:
       file: ./src/chef_incentives_controller.ts
 
   - kind: ethereum/contract
-    name: MFDstats
+    name: MiddleFeeDistribution
     network: "{{ network }}"
     source:
-      address: "{{ mfd_stats_address }}"
-      abi: MFDstats
-      startBlock: {{ mfd_stats_start_block }}
+      address: "{{ middle_fee_distribution_address }}"
+      abi: MiddleFeeDistribution
+      startBlock: {{ middle_fee_distribution_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -93,9 +93,9 @@ dataSources:
       entities:
         - NewTransferAdded
       abis:
-        - name: MFDstats
-          file: ./abis/MFDstats.json
+        - name: MiddleFeeDistribution
+          file: ./abis/MiddleFeeDistribution.json
       eventHandlers:
         - event: NewTransferAdded(indexed address,uint256,uint256)
           handler: handleNewTransferAdded
-      file: ./src/mfd_stats.ts
+      file: ./src/middle_fee_distribution.ts
