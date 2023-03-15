@@ -1,0 +1,101 @@
+specVersion: 0.0.4
+description: Radiant-v2 Graph
+repository: https://github.com/radiant-capital/radiant-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: MultiFeeDistribution
+    network: "arbitrum-one"
+    source:
+      address: "0xf0131C23663d79a7060Af66b500cFf96bbEBFcD5"
+      abi: MultiFeeDistribution
+      startBlock: 69925493
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Relocked
+        - Locked
+        - Withdrawn
+      abis:
+        - name: MultiFeeDistribution
+          file: ./abis/MultiFeeDistribution.json
+      eventHandlers:
+        - event: Relocked(indexed address,uint256,uint256)
+          handler: handleRelocked
+        - event: Locked(indexed address,uint256,uint256,bool)
+          handler: handleLocked
+        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
+          handler: handleWithdrawn
+      file: ./src/multi_fee_distribution.ts
+
+  - kind: ethereum/contract
+    name: LPFeeDistribution
+    network: "arbitrum-one"
+    source:
+      address: "0x77350b260ddF3f860685cc1E08f1e66c43b796fF"
+      abi: MultiFeeDistribution
+      startBlock: 69925493
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Relocked
+        - Locked
+        - Withdrawn
+      abis:
+        - name: MultiFeeDistribution
+          file: ./abis/MultiFeeDistribution.json
+      eventHandlers:
+        - event: Relocked(indexed address,uint256,uint256)
+          handler: handleRelocked
+        - event: Locked(indexed address,uint256,uint256,bool)
+          handler: handleLocked
+        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
+          handler: handleWithdrawn
+      file: ./src/multi_fee_distribution.ts
+
+  - kind: ethereum/contract
+    name: ChefIncentivesController
+    network: "arbitrum-one"
+    source:
+      address: "0xB7e2f4e336C7d3552DC02Bf874f60897c5053140"
+      abi: ChefIncentivesController
+      startBlock: 69925493
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Disqualified
+      abis:
+        - name: ChefIncentivesController
+          file: ./abis/ChefIncentivesController.json
+      eventHandlers:
+        - event: Disqualified(indexed address,uint256)
+          handler: handleDisqualified
+      file: ./src/chef_incentives_controller.ts
+
+  - kind: ethereum/contract
+    name: MFDstats
+    network: "arbitrum-one"
+    source:
+      address: "0xcEa4c3e2cc3FA6d4CbE056c65A1E51E393Aa757a"
+      abi: MFDstats
+      startBlock: 69925493
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewTransferAdded
+      abis:
+        - name: MFDstats
+          file: ./abis/MFDstats.json
+      eventHandlers:
+        - event: NewTransferAdded(indexed address,uint256,uint256)
+          handler: handleNewTransferAdded
+      file: ./src/mfd_stats.ts
