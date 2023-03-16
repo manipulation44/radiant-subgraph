@@ -7,7 +7,6 @@ import {
 import { Relocked, Locked, Withdrawn } from "../generated/schema";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
-import { BETA_TEST_START_TIMESTAMP, BETA_TEST_PERIOD, BETA_TESTERS } from "./constants";
 import { loadLpLocker } from "./entities/lpLocker";
 
 export function handleRelocked(event: RelockedEvent): void {
@@ -29,11 +28,8 @@ export function handleLocked(event: LockedEvent): void {
   let user = loadUser(event.params.user);
   
   if(event.params.isLP){
-    const timestamp = event.block.timestamp.toI32();
-    const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
     let lpLocker = loadLpLocker(event.params.user);
     lpLocker.lockedBalance = event.params.lockedBalance;
-    lpLocker.isBetaTesterInTestPeriod = isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD;
     lpLocker.save();
   }
 
@@ -54,11 +50,8 @@ export function handleWithdrawn(event: WithdrawEvent): void {
   let user = loadUser(event.params.user);
   
   if(event.params.isLP){
-    const timestamp = event.block.timestamp.toI32();
-    const isBetaTester = BETA_TESTERS.indexOf(event.params.user.toHexString()) >= 0;
     let lpLocker = loadLpLocker(event.params.user);
     lpLocker.lockedBalance = event.params.lockedBalance;
-    lpLocker.isBetaTesterInTestPeriod = isBetaTester && timestamp > BETA_TEST_START_TIMESTAMP && timestamp <= BETA_TEST_START_TIMESTAMP + BETA_TEST_PERIOD;
     lpLocker.save();
   }
 

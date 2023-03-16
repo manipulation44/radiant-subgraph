@@ -102,5 +102,4 @@ type Asset @entity {
 type LpLocker @entity {
   id: ID!
   lockedBalance: BigInt!
-  isBetaTesterInTestPeriod: Boolean!
 }

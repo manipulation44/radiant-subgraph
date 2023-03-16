@@ -1,4 +1,4 @@
-import { NewTransferAdded as NewTransferAddedEvent } from "../generated/MFDstats/MFDstats";
+import { NewTransferAdded as NewTransferAddedEvent } from "../generated/MiddleFeeDistribution/MiddleFeeDistribution";
 import { NewTransferAdded } from "../generated/schema";
 import { loadAsset } from "./entities/asset";
 import { loadUsdTransfered } from "./entities/usdTransfer";

@@ -32,33 +32,6 @@ dataSources:
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
-    name: LPFeeDistribution
-    network: "{{ network }}"
-    source:
-      address: "{{ lp_fee_distribution_address }}"
-      abi: MultiFeeDistribution
-      startBlock: {{ lp_fee_distribution_start_block }}
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Relocked
-        - Locked
-        - Withdrawn
-      abis:
-        - name: MultiFeeDistribution
-          file: ./abis/MultiFeeDistribution.json
-      eventHandlers:
-        - event: Relocked(indexed address,uint256,uint256)
-          handler: handleRelocked
-        - event: Locked(indexed address,uint256,uint256,bool)
-          handler: handleLocked
-        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
-          handler: handleWithdrawn
-      file: ./src/multi_fee_distribution.ts
-
-  - kind: ethereum/contract
     name: ChefIncentivesController
     network: "{{ network }}"
     source:

@@ -8,36 +8,9 @@ dataSources:
     name: MultiFeeDistribution
     network: "arbitrum-one"
     source:
-      address: "0xf0131C23663d79a7060Af66b500cFf96bbEBFcD5"
+      address: "0x6737f5062fF9A812fc924843a1515e1c294E8241"
       abi: MultiFeeDistribution
-      startBlock: 69925493
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - Relocked
-        - Locked
-        - Withdrawn
-      abis:
-        - name: MultiFeeDistribution
-          file: ./abis/MultiFeeDistribution.json
-      eventHandlers:
-        - event: Relocked(indexed address,uint256,uint256)
-          handler: handleRelocked
-        - event: Locked(indexed address,uint256,uint256,bool)
-          handler: handleLocked
-        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
-          handler: handleWithdrawn
-      file: ./src/multi_fee_distribution.ts
-
-  - kind: ethereum/contract
-    name: LPFeeDistribution
-    network: "arbitrum-one"
-    source:
-      address: "0x77350b260ddF3f860685cc1E08f1e66c43b796fF"
-      abi: MultiFeeDistribution
-      startBlock: 69925493
+      startBlock: 70226906
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -62,9 +35,9 @@ dataSources:
     name: ChefIncentivesController
     network: "arbitrum-one"
     source:
-      address: "0xB7e2f4e336C7d3552DC02Bf874f60897c5053140"
+      address: "0x0cFa18bC9CF6d9F8020B4267a5ff85e57d48Ab6F"
       abi: ChefIncentivesController
-      startBlock: 69925493
+      startBlock: 70226906
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -83,9 +56,9 @@ dataSources:
     name: MiddleFeeDistribution
     network: "arbitrum-one"
     source:
-      address: "0x6E50bD46E1DF30fA3baC50964bEbDA904B5991Ca"
+      address: "0xaAFfA7560e5b0ddd00276F4eAFE701fBce22308F"
       abi: MiddleFeeDistribution
-      startBlock: 69925493
+      startBlock: 70226906
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

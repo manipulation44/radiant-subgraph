@@ -1,14 +1,9 @@
 {
   "network": "chapel",
   "multi_fee_distribution_address": "0x7505E0CF8631bc7aba7417c4525C33c8F0246225",
-  "lp_fee_distribution_address": "0x15d1870E74C51DBf38C78b80E78fb2A391FA4766",
   "chef_incentives_controller_address": "0xF6639Fe2b8f2B80c622e4B1a98C47Ae81E05D36f",
   "middle_fee_distribution_address": "0xD9Ab62c05069BEb7b1c55f938604cD232f54ACA7",
   "multi_fee_distribution_start_block": 27738596,
-  "lp_fee_distribution_start_block": 27738596,
   "chef_incentives_controller_start_block": 27738596,
-  "middle_fee_distribution_start_block": 27738596,
-  "beta_test_start_timestamp": 1678241237,
-  "beta_test_period": 8640000,
-  "beta_testers": []
+  "middle_fee_distribution_start_block": 27738596
 }

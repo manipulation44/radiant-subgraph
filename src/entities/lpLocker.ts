@@ -7,7 +7,6 @@ export function loadLpLocker(address: Address): LpLocker {
   if (!lpLocker) {
     lpLocker = new LpLocker(address.toHexString());
     lpLocker.lockedBalance = BigInt.fromI32(0);
-    lpLocker.isBetaTesterInTestPeriod = false;
 
     lpLocker.save();
   }

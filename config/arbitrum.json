@@ -1,15 +1,10 @@
 {
     "network": "arbitrum-one",
-    "multi_fee_distribution_address": "0xf0131C23663d79a7060Af66b500cFf96bbEBFcD5",
-    "lp_fee_distribution_address": "0x77350b260ddF3f860685cc1E08f1e66c43b796fF",
-    "chef_incentives_controller_address": "0xB7e2f4e336C7d3552DC02Bf874f60897c5053140",
-    "middle_fee_distribution_address": "0x6E50bD46E1DF30fA3baC50964bEbDA904B5991Ca",
-    "multi_fee_distribution_start_block": 69925493,
-    "lp_fee_distribution_start_block": 69925493,
-    "chef_incentives_controller_start_block": 69925493,
-    "middle_fee_distribution_start_block": 69925493,
-    "beta_test_start_timestamp": 1678241237,
-    "beta_test_period": 8640000,
-    "beta_testers": []
+    "multi_fee_distribution_address": "0x6737f5062fF9A812fc924843a1515e1c294E8241",
+    "chef_incentives_controller_address": "0x0cFa18bC9CF6d9F8020B4267a5ff85e57d48Ab6F",
+    "middle_fee_distribution_address": "0xaAFfA7560e5b0ddd00276F4eAFE701fBce22308F",
+    "multi_fee_distribution_start_block": 70226906,
+    "chef_incentives_controller_start_block": 70226906,
+    "middle_fee_distribution_start_block": 70226906
   }
   
