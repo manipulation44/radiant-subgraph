@@ -6,7 +6,6 @@ export function loadUsdTransfered(): UsdTransfered {
 
   if (!usdTransfered) {
     usdTransfered = new UsdTransfered("1");
-    usdTransfered.totalUsdTransfered = BigInt.fromI32(0);
     usdTransfered.totalLpUsdTransfered = BigInt.fromI32(0);
 
     usdTransfered.save();

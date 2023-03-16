@@ -69,6 +69,6 @@ dataSources:
         - name: MiddleFeeDistribution
           file: ./abis/MiddleFeeDistribution.json
       eventHandlers:
-        - event: NewTransferAdded(indexed address,uint256,uint256)
+        - event: NewTransferAdded(indexed address,uint256)
           handler: handleNewTransferAdded
       file: ./src/middle_fee_distribution.ts

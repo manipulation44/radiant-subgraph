@@ -7,7 +7,6 @@ import { getHistoryEntityId } from "./utils";
 export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   let asset = loadAsset(event.params.asset);
   let usdTransfered = loadUsdTransfered();
-  usdTransfered.totalUsdTransfered = usdTransfered.totalUsdTransfered.plus(event.params.usdValue);
   usdTransfered.totalLpUsdTransfered = usdTransfered.totalLpUsdTransfered.plus(event.params.lpUsdValue);
   usdTransfered.save();
 
@@ -17,7 +16,6 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   entity.asset = asset.id;
   entity.timestamp = event.block.timestamp.toI32();
 
-  entity.usdValue = event.params.usdValue;
   entity.lpUsdValue = event.params.lpUsdValue;
 
   entity.save();
