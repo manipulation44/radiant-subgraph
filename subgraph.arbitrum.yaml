@@ -8,9 +8,9 @@ dataSources:
     name: MultiFeeDistribution
     network: "arbitrum-one"
     source:
-      address: "0x6737f5062fF9A812fc924843a1515e1c294E8241"
+      address: "0x9089d57bCb905Fb844AeAc2d671beaAb9ad82fFc"
       abi: MultiFeeDistribution
-      startBlock: 70226906
+      startBlock: 70877130
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,9 +35,9 @@ dataSources:
     name: ChefIncentivesController
     network: "arbitrum-one"
     source:
-      address: "0x0cFa18bC9CF6d9F8020B4267a5ff85e57d48Ab6F"
+      address: "0xCeF4cAc75cc4391d6865F1829Dce73339abDC472"
       abi: ChefIncentivesController
-      startBlock: 70226906
+      startBlock: 70877130
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -56,9 +56,9 @@ dataSources:
     name: MiddleFeeDistribution
     network: "arbitrum-one"
     source:
-      address: "0xaAFfA7560e5b0ddd00276F4eAFE701fBce22308F"
+      address: "0x854e6E00575CF088d192238fc1f85474a6895BAc"
       abi: MiddleFeeDistribution
-      startBlock: 70226906
+      startBlock: 70877130
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
