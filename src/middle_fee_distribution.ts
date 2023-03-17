@@ -1,6 +1,7 @@
 import { NewTransferAdded as NewTransferAddedEvent } from "../generated/MiddleFeeDistribution/MiddleFeeDistribution";
 import { NewTransferAdded } from "../generated/schema";
 import { loadAsset } from "./entities/asset";
+import { loadTotalTransferred } from "./entities/loadTotalTransferred";
 import { loadUsdTransfered } from "./entities/usdTransfer";
 import { getHistoryEntityId } from "./utils";
 
@@ -10,6 +11,10 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   usdTransfered.totalLpUsdTransfered = usdTransfered.totalLpUsdTransfered.plus(event.params.lpUsdValue);
   usdTransfered.save();
 
+  let totalTransferred = loadTotalTransferred();
+  totalTransferred.totalTransferred = totalTransferred.totalTransferred.plus(event.params.lpUsdValue);
+  totalTransferred.save();
+
   let entity = new NewTransferAdded(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;
   entity.action = "NewTransferAdded";
@@ -17,6 +22,7 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   entity.timestamp = event.block.timestamp.toI32();
 
   entity.lpUsdValue = event.params.lpUsdValue;
+  entity.totalTransferred = totalTransferred.totalTransferred;
 
   entity.save();
 }

@@ -67,6 +67,7 @@ type NewTransferAdded implements AssetTransaction @entity {
   timestamp: Int!
 
   lpUsdValue: BigInt!
+  totalTransferred: BigInt!
 }
 
 type Disqualified implements UserTransaction @entity {
@@ -100,4 +101,9 @@ type Asset @entity {
 type LpLocker @entity {
   id: ID!
   lockedBalance: BigInt!
+}
+
+type TotalTransferred @entity {
+  id: ID!
+  totalTransferred: BigInt!
 }
