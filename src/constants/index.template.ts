@@ -25,8 +25,6 @@ export const CHEF_INCENTIVES_CONTROLLER_ADDRESS = Address.fromString(
   "{{ chef_incentives_controller_address }}"
 );
 
-export const BETA_TEST_START_TIMESTAMP = parseInt("{{ beta_test_start_timestamp }}");
+export const ASSET_SYMBOLS = "{{asset_symbols}}".split(",");
 
-export const BETA_TEST_PERIOD = parseInt("{{ beta_test_period }}");
-
-export const BETA_TESTERS = "{{ beta_testers }}".split(",");
+export const RTOKEN_ADDRESSES = "{{rToken_addresses}}".split(",");

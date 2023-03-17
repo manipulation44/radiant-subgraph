@@ -1,6 +1,6 @@
 import { NewTransferAdded as NewTransferAddedEvent } from "../generated/MiddleFeeDistribution/MiddleFeeDistribution";
 import { NewTransferAdded } from "../generated/schema";
-import { loadAsset } from "./entities/asset";
+import { getAssetSymbol, loadAsset } from "./entities/asset";
 import { loadTotalTransferred } from "./entities/loadTotalTransferred";
 import { loadUsdTransfered } from "./entities/usdTransfer";
 import { getHistoryEntityId } from "./utils";
@@ -15,7 +15,9 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   totalTransferred.totalTransferred = totalTransferred.totalTransferred.plus(event.params.lpUsdValue);
   totalTransferred.save();
 
-  let totalTransferredPerAsset = loadTotalTransferred(asset.id);
+  let assetSymbol = getAssetSymbol(event.params.asset);
+
+  let totalTransferredPerAsset = loadTotalTransferred(assetSymbol);
   totalTransferredPerAsset.totalTransferred = totalTransferredPerAsset.totalTransferred.plus(event.params.lpUsdValue);
   totalTransferredPerAsset.save();
 
@@ -27,6 +29,13 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
 
   entity.lpUsdValue = event.params.lpUsdValue;
   entity.totalTransferred = totalTransferred.totalTransferred;
+  entity.usdcTotal = assetSymbol === "USDC" ? loadTotalTransferred("USDC").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("USDC").totalTransferred;
+  entity.usdtTotal = assetSymbol === "USDT" ? loadTotalTransferred("USDT").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("USDT").totalTransferred;
+  entity.daiTotal = assetSymbol === "DAI" ? loadTotalTransferred("DAI").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("DAI").totalTransferred;
+  entity.wbtcTotal = assetSymbol === "WBTC" ? loadTotalTransferred("WBTC").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WBTC").totalTransferred;
+  entity.ethTotal = assetSymbol === "ETH" ? loadTotalTransferred("ETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("ETH").totalTransferred;
+  entity.glpTotal = assetSymbol === "GLP" ? loadTotalTransferred("GLP").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("GLP").totalTransferred;
+  entity.fraxTotal = assetSymbol === "FRAX" ? loadTotalTransferred("FRAX").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("FRAX").totalTransferred;
 
   entity.save();
 }
