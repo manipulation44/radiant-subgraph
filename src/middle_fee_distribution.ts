@@ -11,9 +11,13 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   usdTransfered.totalLpUsdTransfered = usdTransfered.totalLpUsdTransfered.plus(event.params.lpUsdValue);
   usdTransfered.save();
 
-  let totalTransferred = loadTotalTransferred();
+  let totalTransferred = loadTotalTransferred("total");
   totalTransferred.totalTransferred = totalTransferred.totalTransferred.plus(event.params.lpUsdValue);
   totalTransferred.save();
+
+  let totalTransferredPerAsset = loadTotalTransferred(asset.id);
+  totalTransferredPerAsset.totalTransferred = totalTransferredPerAsset.totalTransferred.plus(event.params.lpUsdValue);
+  totalTransferredPerAsset.save();
 
   let entity = new NewTransferAdded(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;
