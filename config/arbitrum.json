@@ -1,18 +1,18 @@
 {
     "network": "arbitrum-one",
-    "multi_fee_distribution_address": "0x9089d57bCb905Fb844AeAc2d671beaAb9ad82fFc",
-    "chef_incentives_controller_address": "0xCeF4cAc75cc4391d6865F1829Dce73339abDC472",
-    "middle_fee_distribution_address": "0x854e6E00575CF088d192238fc1f85474a6895BAc",
-    "multi_fee_distribution_start_block": 70877130,
-    "chef_incentives_controller_start_block": 70877130,
-    "middle_fee_distribution_start_block": 70877130,
+    "multi_fee_distribution_address": "0x359997b8ddDdEE9Bc6f223a5cf44abAa72e42365",
+    "chef_incentives_controller_address": "0x1E2f7B31e789Aef86ca3F99b4B3Daa3be8278f3e",
+    "middle_fee_distribution_address": "0xe45540D915EeA64d319dcD304392FDffd8d2a199",
+    "multi_fee_distribution_start_block": 71190886,
+    "chef_incentives_controller_start_block": 71190886,
+    "middle_fee_distribution_start_block": 71190886,
     "asset_symbols": ["USDC", "USDT", "DAI", "WBTC", "ETH"],
     "rToken_addresses": [
-      "0xbE58393143521920396432222fA54a68F8A0eb8b",
-      "0x708C180BB5651126897E44928d3E295b47b61476",
-      "0xD7bd1Fa82B8CBd74093A6b816E93Ff8542834C39",
-      "0xc153656bc1B7B6F43eb11724a7Ce70aBf313eb81",
-      "0x32c503c6136c5e50E88b49C8Cf56916B1C666aC0"
+      "0x57f809351C89c52e5c0E16f26009af1c843F7760",
+      "0x31Cc5069279B64b434aa80AC0De852C6662af9Fb",
+      "0x89f2d69Fb929f0bAa9a2C8bB1Cff12A08af9fc2f",
+      "0x41E2C65e630EC35603444EDee576Cf1e18a17785",
+      "0xe99DA98C2f0797875143e614A8466aB09c5B3Efd"
     ]
   }
   
