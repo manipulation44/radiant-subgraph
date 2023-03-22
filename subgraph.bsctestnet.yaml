@@ -8,7 +8,7 @@ dataSources:
     name: MultiFeeDistribution
     network: "chapel"
     source:
-      address: "0x7505E0CF8631bc7aba7417c4525C33c8F0246225"
+      address: "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76"
       abi: MultiFeeDistribution
       startBlock: 27738596
     mapping:
@@ -35,7 +35,7 @@ dataSources:
     name: ChefIncentivesController
     network: "chapel"
     source:
-      address: "0xF6639Fe2b8f2B80c622e4B1a98C47Ae81E05D36f"
+      address: "0xB9a82Fe84cCd71fef03129F8e08DE8c14F14E1dC"
       abi: ChefIncentivesController
       startBlock: 27738596
     mapping:
@@ -56,7 +56,7 @@ dataSources:
     name: MiddleFeeDistribution
     network: "chapel"
     source:
-      address: "0xD9Ab62c05069BEb7b1c55f938604cD232f54ACA7"
+      address: "0x66a9051B9092AD4231F896B97Ed9b5f23cce2E6a"
       abi: MiddleFeeDistribution
       startBlock: 27738596
     mapping:

@@ -36,6 +36,9 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   entity.ethTotal = assetSymbol === "ETH" ? loadTotalTransferred("ETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("ETH").totalTransferred;
   entity.glpTotal = assetSymbol === "GLP" ? loadTotalTransferred("GLP").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("GLP").totalTransferred;
   entity.fraxTotal = assetSymbol === "FRAX" ? loadTotalTransferred("FRAX").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("FRAX").totalTransferred;
+  entity.busdTotal = assetSymbol === "BUSD" ? loadTotalTransferred("BUSD").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BUSD").totalTransferred;
+  entity.wethTotal = assetSymbol === "WETH" ? loadTotalTransferred("WETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WETH").totalTransferred;
+  entity.bnbTotal = assetSymbol === "BNB" ? loadTotalTransferred("BNB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BNB").totalTransferred;
 
   entity.save();
 }
