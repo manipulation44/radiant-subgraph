@@ -1,18 +1,24 @@
 {
   "network": "chapel",
-  "multi_fee_distribution_address": "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76",
-  "chef_incentives_controller_address": "0xB9a82Fe84cCd71fef03129F8e08DE8c14F14E1dC",
-  "middle_fee_distribution_address": "0x66a9051B9092AD4231F896B97Ed9b5f23cce2E6a",
-  "multi_fee_distribution_start_block": 27738596,
-  "chef_incentives_controller_start_block": 27738596,
-  "middle_fee_distribution_start_block": 27738596,
-  "asset_symbols": ["BUSD", "USDT", "DAI", "WBTC", "BNB", "WETH"],
+  "multi_fee_distribution_address": "0x0289b4Fe1F7a80197FBb63f250C819a6B6C016C2",
+  "chef_incentives_controller_address": "0xfd2caC5fEd20ED1F349a3DF444D2bCccB6bb535F",
+  "middle_fee_distribution_address": "0x625A5065028B5ca1c1DF813526329e5CBF9755E9",
+  "multi_fee_distribution_start_block": 28281562,
+  "chef_incentives_controller_start_block": 28281562,
+  "middle_fee_distribution_start_block": 28281562,
+  "asset_symbols": ["BUSD", "USDT", "DAI", "WBTC", "WBNB", "WETH"],
   "rToken_addresses": [
-    "0x30d06C6396398153cD1f9e8be58f75fDcC610378",
-    "0x321f3c827826f17Cec9f454ff39e8bC515138AB7",
-    "0x548075dd4f3b65291b167C83BEe885BdE9f4e2Cb",
-    "0x90Fa01577D18A3eBd9BB2B82BD0E6103FdB70c58",
-    "0xAcf8E2A47801d1C0eD899a14f097dc20f1d9c58A",
-    "0xe9f21C6d3F0A8d0919eB6cE309eb4b1b6C3bBb4a"
+    "0x43327100d567cB2806a966973ba40b31AC4afAC1",
+    "0x40ab7d79fd4938a2E2a07D75AfD851B7a4FdB9D2",
+    "0x6834B897d14FE9CBAfe58114057050e41F53E5C5",
+    "0xaf391ACB0ac4a1F60E33C4E383db142df4d2b4e6",
+    "0x9B9350461BE09C1Fe06BAc03C5c361B58c0B484E",
+    "0x3d1c2AAcADf5D9Ab92e3eBf9b1BDE7FA519AD799",
+    "0x2E78b91D2Fee0BCcB6962207d0136003709f4675",
+    "0xD7DDc7Ef15504AC420983fEb2Cf730bF35Fa7141",
+    "0x0ED0bFeC9cB81A59cCadAeC5083bE56113f81513",
+    "0x59f20e8A36B746172bFaDabB84297AB9D84C449C",
+    "0xC5C3c8f8e818eB9826c8c15c35d544C16dFf1496",
+    "0x9Cb859b8e9312AF771a2F58A024cDe1bbA1Fc69A"
   ]
 }
