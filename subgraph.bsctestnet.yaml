@@ -8,9 +8,9 @@ dataSources:
     name: MultiFeeDistribution
     network: "chapel"
     source:
-      address: "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76"
+      address: "0x7505E0CF8631bc7aba7417c4525C33c8F0246225"
       abi: MultiFeeDistribution
-      startBlock: 28257900
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -35,9 +35,9 @@ dataSources:
     name: ChefIncentivesController
     network: "chapel"
     source:
-      address: "0xB9a82Fe84cCd71fef03129F8e08DE8c14F14E1dC"
+      address: "0xF6639Fe2b8f2B80c622e4B1a98C47Ae81E05D36f"
       abi: ChefIncentivesController
-      startBlock: 28257900
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -56,9 +56,9 @@ dataSources:
     name: MiddleFeeDistribution
     network: "chapel"
     source:
-      address: "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76"
+      address: "0xD9Ab62c05069BEb7b1c55f938604cD232f54ACA7"
       abi: MiddleFeeDistribution
-      startBlock: 28257900
+      startBlock: 27738596
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
