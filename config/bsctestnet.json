@@ -1,19 +1,24 @@
 {
   "network": "chapel",
-  "multi_fee_distribution_address": "0x7505E0CF8631bc7aba7417c4525C33c8F0246225",
-  "chef_incentives_controller_address": "0xF6639Fe2b8f2B80c622e4B1a98C47Ae81E05D36f",
-  "middle_fee_distribution_address": "0xD9Ab62c05069BEb7b1c55f938604cD232f54ACA7",
-  "multi_fee_distribution_start_block": 27738596,
-  "chef_incentives_controller_start_block": 27738596,
-  "middle_fee_distribution_start_block": 27738596,
-  "asset_symbols": ["USDC", "USDT", "DAI", "WBTC", "ETH", "GLP", "FRAX"],
+  "multi_fee_distribution_address": "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76",
+  "chef_incentives_controller_address": "0xB9a82Fe84cCd71fef03129F8e08DE8c14F14E1dC",
+  "middle_fee_distribution_address": "0x58Ea79F8699FeDa7Ef20FBceAAFA75331bCA7A76",
+  "multi_fee_distribution_start_block": 28257900,
+  "chef_incentives_controller_start_block": 28257900,
+  "middle_fee_distribution_start_block": 28257900,
+  "asset_symbols": ["USDT", "DAI", "WBTC", "WETH", "WBNB"],
   "rToken_addresses": [
-    "0xB98d5dB1480B785A2E93dbB2ea9Ce1bf3dfaA190",
-    "0x2E30D700A1896508e16c35A871BE0287ecd1Ac7D",
-    "0x87a936EdC0E488B30A5F381EE890389c203dD8d3",
-    "0x98A4108c3A2f38B06F6E9061256dc09023e58436",
-    "0x8F87962a94B7f2fCBb38649799e6642c602f9e65",
-    "0x8e9eac9Fc9D67df3179bD6EdB44e5AC935DDbD71",
-    "0x8e37778DFEb4cdD9ffE7ee21231E762ce799F910"
+    "0x30d06C6396398153cD1f9e8be58f75fDcC610378",
+    "0x108c90d1801126219566fdE2c14289b5e4D1b2F3",
+    "0x321f3c827826f17Cec9f454ff39e8bC515138AB7",
+    "0x3937164298492E9C9aB561467EB06F1F4fC4e1bd",
+    "0x548075dd4f3b65291b167C83BEe885BdE9f4e2Cb",
+    "0xAa67B09d06F4D2ee5CD83487bfb795054bCee1c4",
+    "0xe9f21C6d3F0A8d0919eB6cE309eb4b1b6C3bBb4a",
+    "0x3e9951A86c29b290465d3Aeb8Fb2C7cE6cBCf422",
+    "0x90Fa01577D18A3eBd9BB2B82BD0E6103FdB70c58",
+    "0x0DEDc2cA8F8e775080CD712F032918e0a7540D6c",
+    "0xAcf8E2A47801d1C0eD899a14f097dc20f1d9c58A",
+    "0xa46660bcf769406c61ea07363AddEDc6c8Bd65d9"
   ]
 }
