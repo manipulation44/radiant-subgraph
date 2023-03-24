@@ -78,6 +78,7 @@ type NewTransferAdded implements AssetTransaction @entity {
   busdTotal: BigInt!
   wethTotal: BigInt!
   bnbTotal: BigInt!
+  btcbTotal: BigInt!
 }
 
 type Disqualified implements UserTransaction @entity {

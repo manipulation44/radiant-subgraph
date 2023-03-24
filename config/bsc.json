@@ -1,0 +1,18 @@
+{
+  "network": "bsc",
+  "multi_fee_distribution_address": "0x8823Ca7690Ca66018d3bB82EDeB1Ff21A4d2E6e1",
+  "chef_incentives_controller_address": "0x897090544959Fbe23752E2B9a04b033913934790",
+  "middle_fee_distribution_address": "0xB1A15fAfAC81D98875B8a902A7F9F988DAF77A3A",
+  "multi_fee_distribution_start_block": 26735199,
+  "chef_incentives_controller_start_block": 26735199,
+  "middle_fee_distribution_start_block": 26735199,
+  "asset_symbols": ["BUSD", "USDT", "USDC", "BTCB", "BNB", "WETH"],
+  "rToken_addresses": [
+    "0x37D99b6D87984DbF103F68B769B05c3987ec49D4",
+    "0x58276F1d3e1AE93dC908984aF5D2a741860Ce57e",
+    "0xeDA78914d2F9E7e5Dcd735a9D765DB4eF7Ccf93F",
+    "0xfA53C01cC34373BA8EF3F7d872b04d355A550D3D",
+    "0x3447C1196770B9635a7385cBffD1235985311Ae0",
+    "0x24d6067CF72271521EE13C06C6470093BC6C8005"
+  ]
+}

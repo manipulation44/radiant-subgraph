@@ -39,6 +39,7 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   entity.busdTotal = assetSymbol === "BUSD" ? loadTotalTransferred("BUSD").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BUSD").totalTransferred;
   entity.wethTotal = assetSymbol === "WETH" ? loadTotalTransferred("WETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WETH").totalTransferred;
   entity.bnbTotal = assetSymbol === "BNB" ? loadTotalTransferred("BNB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BNB").totalTransferred;
+  entity.btcbTotal = assetSymbol === "BTCB" ? loadTotalTransferred("BTCB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BTCB").totalTransferred;
 
   entity.save();
 }
