@@ -1,18 +1,18 @@
 {
   "network": "bsc",
-  "multi_fee_distribution_address": "0xf088937845327579AE8722f45233c7C3523638f5",
-  "chef_incentives_controller_address": "0xe4945591EfA99d5a0f4908458be68bC341C62A81",
-  "middle_fee_distribution_address": "0x51e83A412a87DC69439507c8D51398634bF60afF",
-  "multi_fee_distribution_start_block": 26827358,
-  "chef_incentives_controller_start_block": 26827358,
-  "middle_fee_distribution_start_block": 26827358,
+  "multi_fee_distribution_address": "0x4FD9F7C5ca0829A656561486baDA018505dfcB5E",
+  "chef_incentives_controller_address": "0x7C16aBb090d3FB266E9d17F60174B632f4229933",
+  "middle_fee_distribution_address": "0xcebdff400A23E5Ad1CDeB11AfdD0087d5E9dFed8",
+  "multi_fee_distribution_start_block": 26832003,
+  "chef_incentives_controller_start_block": 26832003,
+  "middle_fee_distribution_start_block": 26832003,
   "asset_symbols": ["BUSD", "USDT", "USDC", "BTCB", "BNB", "WETH"],
   "rToken_addresses": [
-    "0x04638E0859d41771D1EC49439824c3C3E08E37de",
-    "0x2B072C78Ee948767b07502B67c87B1dAF9f80CeD",
-    "0x38b2802F15FF4548CA8Ff09e79A5aAAEDFC3Ee85",
-    "0x9A8bAb6f7866b165f01442e50a649633869a23eA",
-    "0xD68f6D7681B02422317562d9B4910EEd4f4455D2",
-    "0x17ED3D7725B816e4fe36BAca05Fa66c929B16490"
+    "0x34d4F4459c1b529BEbE1c426F1e584151BE2C1e5",
+    "0x4Ff2DD7c6435789E0BB56B0553142Ad00878a004",
+    "0x89d763e8532D256a3e3e60c1C218Ac71E71cF664",
+    "0x3bDCEf9e656fD9D03eA98605946b4fbF362C342b",
+    "0x455a281D508B4e34d55b31AC2e4579BD9b77cA8E",
+    "0x58b0BB56CFDfc5192989461dD43568bcfB2797Db"
   ]
 }
