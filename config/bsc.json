@@ -6,13 +6,13 @@
   "multi_fee_distribution_start_block": 26832003,
   "chef_incentives_controller_start_block": 26832003,
   "middle_fee_distribution_start_block": 26832003,
-  "asset_symbols": ["BUSD", "USDT", "USDC", "BTCB", "BNB", "WETH"],
+  "asset_symbols": ["BUSD", "USDT", "USDC", "BTCB", "BNB", "ETH"],
   "rToken_addresses": [
-    "0x34d4F4459c1b529BEbE1c426F1e584151BE2C1e5",
-    "0x4Ff2DD7c6435789E0BB56B0553142Ad00878a004",
     "0x89d763e8532D256a3e3e60c1C218Ac71E71cF664",
+    "0x4Ff2DD7c6435789E0BB56B0553142Ad00878a004",
     "0x3bDCEf9e656fD9D03eA98605946b4fbF362C342b",
-    "0x455a281D508B4e34d55b31AC2e4579BD9b77cA8E",
-    "0x58b0BB56CFDfc5192989461dD43568bcfB2797Db"
+    "0x34d4F4459c1b529BEbE1c426F1e584151BE2C1e5",
+    "0x58b0BB56CFDfc5192989461dD43568bcfB2797Db",
+    "0x455a281D508B4e34d55b31AC2e4579BD9b77cA8E"
   ]
 }
