@@ -96,6 +96,11 @@ type UsdTransfered @entity {
   totalLpUsdTransfered: BigInt!
 }
 
+type ReserveSize @entity {
+  id: ID!
+  amount: BigInt!
+}
+
 type User @entity {
   id: ID!
   relocked: [Relocked!]! @derivedFrom(field: "user")
