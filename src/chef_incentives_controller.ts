@@ -12,7 +12,5 @@ export function handleDisqualified(event: DisqualifiedEvent): void {
   entity.user = user.id;
   entity.timestamp = event.block.timestamp.toI32();
 
-  entity.rewardsRemoved = event.params.rewardsRemoved;
-
   entity.save();
 }

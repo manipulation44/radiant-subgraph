@@ -48,7 +48,7 @@ dataSources:
         - name: ChefIncentivesController
           file: ./abis/ChefIncentivesController.json
       eventHandlers:
-        - event: Disqualified(indexed address,uint256)
+        - event: Disqualified(indexed address)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
 
@@ -72,3 +72,27 @@ dataSources:
         - event: NewTransferAdded(indexed address,uint256)
           handler: handleNewTransferAdded
       file: ./src/middle_fee_distribution.ts
+    
+  - kind: ethereum/contract
+    name: LendingPool
+    network: "bsc"
+    source:
+      address: "0xd50Cf00b6e600Dd036Ba8eF475677d816d6c4281"
+      abi: LendingPool
+      startBlock: 26832003
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdraw
+      abis:
+        - name: LendingPool
+          file: ./abis/LendingPool.json
+      eventHandlers:
+        - event: Deposit(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/lending_pool.ts

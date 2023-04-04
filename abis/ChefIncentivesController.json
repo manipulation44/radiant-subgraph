@@ -64,12 +64,6 @@
         "internalType": "address",
         "name": "user",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "rewardsRemoved",
-        "type": "uint256"
       }
     ],
     "name": "Disqualified",
@@ -92,6 +86,19 @@
       }
     ],
     "name": "EmissionScheduleAppended",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
     "type": "event"
   },
   {
@@ -157,19 +164,6 @@
     ],
     "name": "Unpaused",
     "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "ELIGIBILITY_ENABLED",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
   },
   {
     "inputs": [],
@@ -266,25 +260,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "bountyForUser",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "bounty",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "bountyManager",
     "outputs": [
@@ -344,34 +319,11 @@
     "name": "claimBounty",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "bountyAmt",
-        "type": "uint256"
-      },
-      {
         "internalType": "bool",
         "name": "issueBaseBounty",
         "type": "bool"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_tokens",
-        "type": "address[]"
-      }
-    ],
-    "name": "claimToBase",
-    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
@@ -389,24 +341,13 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "lastEligibleTime",
-        "type": "uint256"
-      }
-    ],
-    "name": "earnedSince",
+    "inputs": [],
+    "name": "eligibilityEnabled",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "earnedAmount",
-        "type": "uint256"
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -487,7 +428,30 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "timestamp",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "endingTime",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "estimatedTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lastUpdatedTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "updateCadence",
         "type": "uint256"
       }
     ],
@@ -586,6 +550,19 @@
   },
   {
     "inputs": [],
+    "name": "leverager",
+    "outputs": [
+      {
+        "internalType": "contract ILeverager",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -595,6 +572,13 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -798,19 +782,6 @@
   {
     "inputs": [
       {
-        "internalType": "address[]",
-        "name": "_users",
-        "type": "address[]"
-      }
-    ],
-    "name": "saveUserRewards",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "_bountyManager",
         "type": "address"
@@ -840,6 +811,11 @@
         "internalType": "address",
         "name": "_contract",
         "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_value",
+        "type": "bool"
       }
     ],
     "name": "setEligibilityExempt",
@@ -861,6 +837,32 @@
       }
     ],
     "name": "setEmissionSchedule",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_lapse",
+        "type": "uint256"
+      }
+    ],
+    "name": "setEndingTimeUpdateCadence",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract ILeverager",
+        "name": "_leverager",
+        "type": "address"
+      }
+    ],
+    "name": "setLeverager",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -948,6 +950,13 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "unpause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -989,11 +998,6 @@
       {
         "internalType": "uint256",
         "name": "rewardDebt",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "enterTime",
         "type": "uint256"
       },
       {

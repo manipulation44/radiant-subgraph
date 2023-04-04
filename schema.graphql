@@ -87,8 +87,6 @@ type Disqualified implements UserTransaction @entity {
   action: Action!
   user: User!
   timestamp: Int!
-
-  rewardsRemoved: BigInt!
 }
 
 type UsdTransfered @entity {
