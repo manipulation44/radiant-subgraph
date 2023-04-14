@@ -48,7 +48,7 @@ dataSources:
         - name: ChefIncentivesController
           file: ./abis/ChefIncentivesController.json
       eventHandlers:
-        - event: Disqualified(indexed address,uint256)
+        - event: Disqualified(indexed address)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
 

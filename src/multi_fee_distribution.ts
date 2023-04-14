@@ -1,16 +1,24 @@
 import {
   Relocked as RelockedEvent,
   Locked as LockedEvent,
-  Withdrawn as WithdrawEvent
+  Withdrawn as WithdrawEvent,
+  MultiFeeDistribution
 } from "../generated/MultiFeeDistribution/MultiFeeDistribution";
 
 import { Relocked, Locked, Withdrawn } from "../generated/schema";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
 import { loadLpLocker } from "./entities/lpLocker";
+import { loadLockedSupply } from "./entities/lockedSupply";
 
 export function handleRelocked(event: RelockedEvent): void {
   let user = loadUser(event.params.user);
+  let lockedSupply = loadLockedSupply();
+  let mfdContract = MultiFeeDistribution.bind(event.address);
+
+  lockedSupply.lockedSupply = mfdContract.lockedSupply();
+  lockedSupply.address = event.address.toHexString();
+  lockedSupply.save();
 
   let entity = new Relocked(getHistoryEntityId(event));
   entity.txHash = event.transaction.hash;
@@ -26,6 +34,12 @@ export function handleRelocked(event: RelockedEvent): void {
 
 export function handleLocked(event: LockedEvent): void {
   let user = loadUser(event.params.user);
+  let lockedSupply = loadLockedSupply();
+  let mfdContract = MultiFeeDistribution.bind(event.address);
+
+  lockedSupply.lockedSupply = mfdContract.lockedSupply();
+  lockedSupply.address = event.address.toHexString();
+  lockedSupply.save();
   
   if(event.params.isLP){
     let lpLocker = loadLpLocker(event.params.user);
@@ -48,6 +62,12 @@ export function handleLocked(event: LockedEvent): void {
 
 export function handleWithdrawn(event: WithdrawEvent): void {
   let user = loadUser(event.params.user);
+  let lockedSupply = loadLockedSupply();
+  let mfdContract = MultiFeeDistribution.bind(event.address);
+
+  lockedSupply.lockedSupply = mfdContract.lockedSupply();
+  lockedSupply.address = event.address.toHexString();
+  lockedSupply.save();
   
   if(event.params.isLP){
     let lpLocker = loadLpLocker(event.params.user);

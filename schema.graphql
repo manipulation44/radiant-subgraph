@@ -94,6 +94,12 @@ type UsdTransfered @entity {
   totalLpUsdTransfered: BigInt!
 }
 
+type LockedSupply @entity {
+  id: ID!
+  lockedSupply: BigInt!
+  address: String
+}
+
 type ReserveSize @entity {
   id: ID!
   amount: BigInt!
