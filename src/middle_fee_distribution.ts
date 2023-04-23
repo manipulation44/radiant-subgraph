@@ -40,6 +40,8 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
   entity.wethTotal = assetSymbol === "WETH" ? loadTotalTransferred("WETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WETH").totalTransferred;
   entity.bnbTotal = assetSymbol === "BNB" ? loadTotalTransferred("BNB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BNB").totalTransferred;
   entity.btcbTotal = assetSymbol === "BTCB" ? loadTotalTransferred("BTCB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BTCB").totalTransferred;
+  entity.wstETHTotal = assetSymbol === "WSTETH" ? loadTotalTransferred("WSTETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WSTETH").totalTransferred;
+  entity.arbTotal = assetSymbol === "ARB" ? loadTotalTransferred("ARB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("ARB").totalTransferred;
 
   entity.save();
 }
