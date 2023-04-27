@@ -68,19 +68,20 @@ type NewTransferAdded implements AssetTransaction @entity {
 
   lpUsdValue: BigInt!
   totalTransferred: BigInt!
-  usdcTotal: BigInt!
-  usdtTotal: BigInt!
-  daiTotal: BigInt!
-  wbtcTotal: BigInt!
-  ethTotal: BigInt!
-  glpTotal: BigInt!
-  fraxTotal: BigInt!
-  busdTotal: BigInt!
-  wethTotal: BigInt!
-  bnbTotal: BigInt!
-  btcbTotal: BigInt!
-  wstETHTotal: BigInt!
-  arbTotal: BigInt!
+  assetTotals: [AssetTotalTransferred!]
+  # usdcTotal: BigInt!
+  # usdtTotal: BigInt!
+  # daiTotal: BigInt!
+  # wbtcTotal: BigInt!
+  # ethTotal: BigInt!
+  # glpTotal: BigInt!
+  # fraxTotal: BigInt!
+  # busdTotal: BigInt!
+  # wethTotal: BigInt!
+  # bnbTotal: BigInt!
+  # btcbTotal: BigInt!
+  # wstETHTotal: BigInt!
+  # arbTotal: BigInt!
 }
 
 type Disqualified implements UserTransaction @entity {
@@ -127,5 +128,11 @@ type LpLocker @entity {
 
 type TotalTransferred @entity {
   id: ID!
+  totalTransferred: BigInt!
+}
+
+type AssetTotalTransferred @entity{
+  id: ID!
+  symbol: String!
   totalTransferred: BigInt!
 }
