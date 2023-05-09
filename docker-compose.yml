@@ -22,7 +22,7 @@ services:
       GRAPH_NO_EIP_1898_SUPPORT: 1
       GRAPH_ALLOW_NON_DETERMINISTIC_IPFS: 1
       GRAPH_ALLOW_NON_DETERMINISTIC_FULLTEXT_SEARCH: 1
-      ethereum: "31337:https://goerli-rollup.arbitrum.io/rpc"
+      ethereum: "31337:http://localhost:8545"
       RUST_LOG: info
   ipfs:
     container_name: ipfs

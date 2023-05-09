@@ -42,19 +42,5 @@ export function handleNewTransferAdded(event: NewTransferAddedEvent): void {
     assetTotals.push(id);
   }
   entity.assetTotals = assetTotals;
-  // entity.usdcTotal = assetSymbol === "USDC" ? loadTotalTransferred("USDC").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("USDC").totalTransferred;
-  // entity.usdtTotal = assetSymbol === "USDT" ? loadTotalTransferred("USDT").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("USDT").totalTransferred;
-  // entity.daiTotal = assetSymbol === "DAI" ? loadTotalTransferred("DAI").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("DAI").totalTransferred;
-  // entity.wbtcTotal = assetSymbol === "WBTC" ? loadTotalTransferred("WBTC").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WBTC").totalTransferred;
-  // entity.ethTotal = assetSymbol === "ETH" ? loadTotalTransferred("ETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("ETH").totalTransferred;
-  // entity.glpTotal = assetSymbol === "GLP" ? loadTotalTransferred("GLP").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("GLP").totalTransferred;
-  // entity.fraxTotal = assetSymbol === "FRAX" ? loadTotalTransferred("FRAX").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("FRAX").totalTransferred;
-  // entity.busdTotal = assetSymbol === "BUSD" ? loadTotalTransferred("BUSD").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BUSD").totalTransferred;
-  // entity.wethTotal = assetSymbol === "WETH" ? loadTotalTransferred("WETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WETH").totalTransferred;
-  // entity.bnbTotal = assetSymbol === "BNB" ? loadTotalTransferred("BNB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BNB").totalTransferred;
-  // entity.btcbTotal = assetSymbol === "BTCB" ? loadTotalTransferred("BTCB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("BTCB").totalTransferred;
-  // entity.wstETHTotal = assetSymbol === "WSTETH" ? loadTotalTransferred("WSTETH").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("WSTETH").totalTransferred;
-  // entity.arbTotal = assetSymbol === "ARB" ? loadTotalTransferred("ARB").totalTransferred.minus(event.params.lpUsdValue) : loadTotalTransferred("ARB").totalTransferred;
-
   entity.save();
 }

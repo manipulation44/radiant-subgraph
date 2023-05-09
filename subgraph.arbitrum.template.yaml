@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: "31337"
+    network: "{{ network }}"
     source:
-      address: "0x1c85638e118b37167e9298c2268758e058DdfDA0"
+      address: "{{ multi_fee_distribution_address }}"
       abi: MultiFeeDistribution
-      startBlock: 1
+      startBlock: {{ multi_fee_distribution_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -33,11 +33,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: "31337"
+    network: "{{ network }}"
     source:
-      address: "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3"
+      address: "{{ chef_incentives_controller_address }}"
       abi: ChefIncentivesController
-      startBlock: 1
+      startBlock: {{ chef_incentives_controller_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -54,11 +54,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: MiddleFeeDistribution
-    network: "31337"
+    network: "{{ network }}"
     source:
-      address: "0x4C2F7092C2aE51D986bEFEe378e50BD4dB99C901"
+      address: "{{ middle_fee_distribution_address }}"
       abi: MiddleFeeDistribution
-      startBlock: 1
+      startBlock: {{ middle_fee_distribution_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -75,11 +75,11 @@ dataSources:
     
   - kind: ethereum/contract
     name: LendingPool
-    network: "31337"
+    network: "{{ network }}"
     source:
-      address: "0x55652FF92Dc17a21AD6810Cce2F4703fa2339CAE"
+      address: "{{ lending_pool_address }}"
       abi: LendingPool
-      startBlock: 1
+      startBlock: {{ lending_pool_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -99,11 +99,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: StandardArbERC20
-    network: "31337"
+    network: "{{ network }}"
     source:
-      address: "0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d"
+      address: "{{ bal_address }}"
       abi: StandardArbERC20
-      startBlock: 1
+      startBlock: {{ lending_pool_start_block }}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

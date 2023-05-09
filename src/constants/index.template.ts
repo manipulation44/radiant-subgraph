@@ -25,6 +25,10 @@ export const CHEF_INCENTIVES_CONTROLLER_ADDRESS = Address.fromString(
   "{{ chef_incentives_controller_address }}"
 );
 
+export const BAL_REWARD_ADDRESS = Address.fromString(
+  "{{ bal_reward_address }}"
+);
+
 export const ASSET_SYMBOLS = "{{asset_symbols}}".split(",");
 
 export const RTOKEN_ADDRESSES = "{{rToken_addresses}}".split(",");
