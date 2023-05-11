@@ -96,3 +96,24 @@ dataSources:
         - event: Withdraw(indexed address,indexed address,indexed address,uint256)
           handler: handleWithdraw
       file: ./src/lending_pool.ts
+
+  - kind: ethereum/contract
+    name: StandardArbERC20
+    network: "{{ network }}"
+    source:
+      address: "{{ bal_address }}"
+      abi: StandardArbERC20
+      startBlock: {{ lending_pool_start_block }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: StandardArbERC20
+          file: ./abis/StandardArbERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/standard_arb_erc20.ts

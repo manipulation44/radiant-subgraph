@@ -114,6 +114,6 @@ dataSources:
         - name: StandardArbERC20
           file: ./abis/StandardArbERC20.json
       eventHandlers:
-        - event: Transfer(indexed address,indexed address,uint256,bytes)
+        - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/standard_arb_erc20.ts
