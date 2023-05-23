@@ -117,3 +117,23 @@ dataSources:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
       file: ./src/standard_arb_erc20.ts
+
+  - kind: ethereum/contract
+    name: PriceProvider
+    network: "{{ network }}"
+    source:
+      address: "{{ price_provider_address }}"
+      abi: PriceProvider
+      startBlock: {{ price_provider_start_block }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LpTokenPrice
+      abis:
+        - name: PriceProvider
+          file: ./abis/PriceProvider.json
+      blockHandlers:
+        - handler: getLpTokenPrice
+      file: ./src/price_provider.ts

@@ -6,10 +6,12 @@
   "lending_pool_address": "0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1",
   "bal_address": "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8",
   "bal_reward_address": "0x1967654222ec22e37c0b0c2a15583b9581d3095e",
+  "price_provider_address": "0x76663727c39Dd46Fed5414d6801c4E8890df85cF",
   "multi_fee_distribution_start_block": 71246451,
   "chef_incentives_controller_start_block": 71246451,
   "middle_fee_distribution_start_block": 71246451,
   "lending_pool_start_block": 71246451,
+  "price_provider_start_block": 91788795,
   "asset_symbols": ["USDC", "USDT", "DAI", "WBTC", "ETH", "WSTETH", "ARB"],
   "rToken_addresses": [
     "0x48a29E756CC1C097388f3B2f3b570ED270423b3d",

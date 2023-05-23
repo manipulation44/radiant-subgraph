@@ -29,6 +29,10 @@ export const BAL_REWARD_ADDRESS = Address.fromString(
   "{{ bal_reward_address }}"
 );
 
+export const PRICE_PROVIDER_ADDRESS = Address.fromString(
+  "{{ price_provider_address }}"
+);
+
 export const ASSET_SYMBOLS = "{{asset_symbols}}".split(",");
 
 export const RTOKEN_ADDRESSES = "{{rToken_addresses}}".split(",");

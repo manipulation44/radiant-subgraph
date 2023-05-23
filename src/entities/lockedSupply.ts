@@ -1,5 +1,5 @@
 import { BigInt } from "@graphprotocol/graph-ts";
-import { LockedSupply } from "../../generated/schema";
+import { LockedSupply, LpTokenPrice } from "../../generated/schema";
 
 export function loadLockedSupply(): LockedSupply {
   let lockedSupply = LockedSupply.load("1");
@@ -13,4 +13,18 @@ export function loadLockedSupply(): LockedSupply {
   }
 
   return lockedSupply as LockedSupply;
+}
+
+export function loadLpTokenPrice(): LpTokenPrice {
+  let lpTokenPrice = LpTokenPrice.load("1");
+
+  if (!lpTokenPrice) {
+    lpTokenPrice = new LpTokenPrice("1");
+    lpTokenPrice.price = BigInt.fromI32(0);
+    lpTokenPrice.blockNumber = BigInt.fromI32(0);
+
+    lpTokenPrice.save();
+  }
+
+  return lpTokenPrice as LpTokenPrice;
 }

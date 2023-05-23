@@ -90,6 +90,12 @@ type LockedSupply @entity {
   address: String
 }
 
+type LpTokenPrice @entity {
+  id: ID!
+  price: BigInt!
+  blockNumber: BigInt!
+}
+
 type ReserveSize @entity {
   id: ID!
   amount: BigInt!
