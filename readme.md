@@ -1,6 +1,6 @@
 # Radiant-v2 Subgraph
 
-Subgraph for Radiant-v2 on Arbitrum-goerli
+Subgraph for Radiant-v2
 
 ### Subgraph Status
 
