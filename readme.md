@@ -6,7 +6,10 @@ Subgraph for Radiant-v2 on Arbitrum-goerli
 
 | network     | subgraph |
 | ----------  | :------: | 
+| arbitrum_one  | https://gateway-arbitrum.network.thegraph.com/api/${subgraphApikey}/subgraphs/id/E1UTUGaNbTb4XbEYoupJZ5hU62hW9CnadKTXLRSP2hM |  
 | arb-goerli  | https://thegraph.com/hosted-service/subgraph/radiantcapitaldevelopment/radiant-arbi-goerli |  
+| bnb chain | https://api.thegraph.com/subgraphs/name/radiantcapitaldevelopment/radiant-bsc |  
+| bsc testnet  | https://api.thegraph.com/subgraphs/name/radiantcapitaldevelopment/bsc-testnet |  
 
 
 
