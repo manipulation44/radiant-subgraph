@@ -6,6 +6,11 @@
     "codegen:arbgoerli": "graph codegen subgraph.arbgoerli.yaml",
     "build:arbgoerli": "graph build subgraph.arbgoerli.yaml",
     "deploy:arbgoerli": "graph deploy --node https://api.thegraph.com/deploy/ radiantcapitaldevelopment/radiant-arbi-goerli subgraph.arbgoerli.yaml",
+    "prepare:sepolia": "mustache config/sepolia.json src/constants/index.template.ts > src/constants/index.ts && mustache config/sepolia.json subgraph.template.yaml > subgraph.sepolia.yaml",
+    "codegen:sepolia": "graph codegen subgraph.sepolia.yaml",
+    "build:sepolia": "graph build subgraph.sepolia.yaml",
+    "deploy:sepolia": "graph deploy --studio radiant-sepolia subgraph.sepolia.yaml",
+    "sepolia": "yarn prepare:sepolia && yarn codegen:sepolia && yarn build:sepolia && yarn deploy:sepolia",
     "prepare:arbitrum": "mustache config/arbitrum.json src/constants/index.template.ts > src/constants/index.ts && mustache config/arbitrum.json subgraph.template.yaml > subgraph.arbitrum.yaml",
     "codegen:arbitrum": "graph codegen subgraph.arbitrum.yaml",
     "build:arbitrum": "graph build subgraph.arbitrum.yaml",
@@ -26,7 +31,7 @@
     "build:lido": "graph build subgraph.lido.yaml",
     "deploy:lido": "graph deploy --node https://api.thegraph.com/deploy/ sunlightluck/lido subgraph.lido.yaml",
     "auth": "graph auth",
-    "auth:studio": "graph auth --studio",
+    "auth:studio": "graph auth --studio ef9d9818d4314740ef5e8231b1a8d725",
     "deploy:studio:arbgoerli": "graph deploy --studio radiant_arbigoerli subgraph.arbgoerli.yaml",
     "deploy:studio:arbitrum": "graph deploy --studio radiant_arbitrum subgraph.arbitrum.yaml",
     "prepare:local": "mustache config/local.json src/constants/index.template.ts > src/constants/index.ts && mustache config/local.json subgraph.template.yaml > subgraph.local.yaml",
@@ -39,8 +44,8 @@
     "stop:node": "docker rm -f postgres ipfs radiant_indexer"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.42.2",
-    "@graphprotocol/graph-ts": "0.29.1",
+    "@graphprotocol/graph-cli": "^0.50.1",
+    "@graphprotocol/graph-ts": "^0.30.0",
     "mustache": "^4.2.0"
   },
   "devDependencies": {

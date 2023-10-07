@@ -123,28 +123,176 @@
     "type": "receive"
   },
   {
+    "inputs": [],
+    "name": "ActiveReward",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AddressZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyAdded",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadySet",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AmountZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientPermission",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidAction",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidBurn",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidEarned",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidLockPeriod",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidLookback",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPeriod",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidTime",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidType",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MintersSet",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnlockTimeNotFound",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "contract IChefIncentivesController",
+        "name": "_controller",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IMiddleFeeDistribution",
+        "name": "_middleFeeDistribution",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_treasury",
+        "type": "address"
+      }
+    ],
+    "name": "AddressesUpdated",
+    "type": "event"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
         "indexed": true,
         "internalType": "address",
-        "name": "user",
+        "name": "_bounty",
         "type": "address"
-      },
+      }
+    ],
+    "name": "BountyManagerUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
       {
         "indexed": true,
         "internalType": "address",
-        "name": "rewardToken",
+        "name": "_stakingToken",
         "type": "address"
+      }
+    ],
+    "name": "LPTokenUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256[]",
+        "name": "lockPeriod",
+        "type": "uint256[]"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "reward",
-        "type": "uint256"
+        "internalType": "uint256[]",
+        "name": "rewardMultipliers",
+        "type": "uint256[]"
       }
     ],
-    "name": "IneligibleRewardRemoved",
+    "name": "LockTypeInfoUpdated",
     "type": "event"
   },
   {
@@ -169,6 +317,12 @@
         "type": "uint256"
       },
       {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "lockLength",
+        "type": "uint256"
+      },
+      {
         "indexed": false,
         "internalType": "bool",
         "name": "isLP",
@@ -176,6 +330,32 @@
       }
     ],
     "name": "Locked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "locker",
+        "type": "address"
+      }
+    ],
+    "name": "LockerAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "locker",
+        "type": "address"
+      }
+    ],
+    "name": "LockerRemoved",
     "type": "event"
   },
   {
@@ -202,6 +382,19 @@
     "inputs": [
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "Paused",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
         "internalType": "address",
         "name": "token",
         "type": "address"
@@ -247,6 +440,32 @@
       {
         "indexed": true,
         "internalType": "address",
+        "name": "_rewardToken",
+        "type": "address"
+      }
+    ],
+    "name": "RewardAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_rewardConverter",
+        "type": "address"
+      }
+    ],
+    "name": "RewardConverterUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
         "name": "user",
         "type": "address"
       },
@@ -272,17 +491,11 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "token",
+        "name": "account",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "newDuration",
-        "type": "uint256"
       }
     ],
-    "name": "RewardsDurationUpdated",
+    "name": "Unpaused",
     "type": "event"
   },
   {
@@ -330,20 +543,7 @@
   },
   {
     "inputs": [],
-    "name": "BURN",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "DEFAULT_LOCK_DURATION",
+    "name": "AGGREGATION_EPOCH",
     "outputs": [
       {
         "internalType": "uint256",
@@ -382,12 +582,25 @@
   },
   {
     "inputs": [],
-    "name": "PriceProvider",
+    "name": "MAX_SLIPPAGE",
     "outputs": [
       {
-        "internalType": "address",
+        "internalType": "uint256",
         "name": "",
-        "type": "address"
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "PERCENT_DIVISOR",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -396,58 +609,6 @@
   {
     "inputs": [],
     "name": "QUART",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "REWARDS_DURATION",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "REWARDS_LOOKBACK",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "STARFLEET_TREASURY",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "VEST_DURATION",
     "outputs": [
       {
         "internalType": "uint256",
@@ -475,7 +636,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardToken",
+        "name": "rewardToken",
         "type": "address"
       }
     ],
@@ -488,7 +649,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardConverter",
+        "name": "rewardConverter_",
         "type": "address"
       }
     ],
@@ -549,15 +710,28 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "burn",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
-        "name": "_user",
+        "name": "user",
         "type": "address"
       },
       {
         "internalType": "bool",
-        "name": "_execute",
+        "name": "execute",
         "type": "bool"
       }
     ],
@@ -630,6 +804,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "defaultLockDuration",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -660,7 +847,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "total",
+        "name": "totalVesting",
         "type": "uint256"
       },
       {
@@ -715,6 +902,52 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "getBalances",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "total",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "unlocked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "locked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "lockedWithMultiplier",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "earned",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Balances",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "getLockDurations",
     "outputs": [
@@ -741,10 +974,23 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "getPriceProvider",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address[]",
-        "name": "_rewardTokens",
+        "name": "rewardTokens_",
         "type": "address[]"
       }
     ],
@@ -757,7 +1003,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardToken",
+        "name": "rewardToken",
         "type": "address"
       }
     ],
@@ -807,52 +1053,47 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rdntToken",
+        "name": "rdntToken_",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_lockZap",
+        "name": "lockZap_",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_dao",
+        "name": "dao_",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_userlist",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "priceProvider",
+        "name": "priceProvider_",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_rewardsDuration",
+        "name": "rewardsDuration_",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_rewardsLookback",
+        "name": "rewardsLookback_",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_lockDuration",
+        "name": "lockDuration_",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_burnRatio",
+        "name": "burnRatio_",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_vestDuration",
+        "name": "vestDuration_",
         "type": "uint256"
       }
     ],
@@ -903,7 +1144,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardToken",
+        "name": "rewardToken",
         "type": "address"
       }
     ],
@@ -954,6 +1195,25 @@
         "internalType": "struct LockedBalance[]",
         "name": "",
         "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "lockedBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "locked",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -1063,29 +1323,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "withPenalty",
-        "type": "bool"
-      }
-    ],
-    "name": "mint",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "",
         "type": "address"
       }
@@ -1122,6 +1359,26 @@
         "internalType": "address",
         "name": "",
         "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pause",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "paused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -1166,10 +1423,56 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_rewardToken",
+        "type": "address"
+      }
+    ],
+    "name": "removeReward",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "requalify",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "requalifyFor",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "rewardConverter",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -1215,7 +1518,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_rewardToken",
+        "name": "rewardToken",
         "type": "address"
       }
     ],
@@ -1274,20 +1577,46 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "rewardsDuration",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "rewardsLookback",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "contract IChefIncentivesController",
-        "name": "_controller",
+        "name": "controller_",
         "type": "address"
       },
       {
         "internalType": "contract IMiddleFeeDistribution",
-        "name": "_middleFeeDistribution",
+        "name": "middleFeeDistribution_",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_treasury",
+        "name": "treasury_",
         "type": "address"
       }
     ],
@@ -1300,8 +1629,13 @@
     "inputs": [
       {
         "internalType": "bool",
-        "name": "_status",
+        "name": "status",
         "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "slippage",
+        "type": "uint256"
       }
     ],
     "name": "setAutocompound",
@@ -1313,7 +1647,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_bounty",
+        "name": "bounty",
         "type": "address"
       }
     ],
@@ -1326,7 +1660,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_index",
+        "name": "index",
         "type": "uint256"
       }
     ],
@@ -1339,7 +1673,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_stakingToken",
+        "name": "stakingToken_",
         "type": "address"
       }
     ],
@@ -1352,12 +1686,12 @@
     "inputs": [
       {
         "internalType": "uint256[]",
-        "name": "_lockPeriod",
+        "name": "lockPeriod_",
         "type": "uint256[]"
       },
       {
         "internalType": "uint256[]",
-        "name": "_rewardMultipliers",
+        "name": "rewardMultipliers_",
         "type": "uint256[]"
       }
     ],
@@ -1369,8 +1703,21 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "lookback",
+        "type": "uint256"
+      }
+    ],
+    "name": "setLookback",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address[]",
-        "name": "_minters",
+        "name": "minters_",
         "type": "address[]"
       }
     ],
@@ -1383,11 +1730,24 @@
     "inputs": [
       {
         "internalType": "bool",
-        "name": "_status",
+        "name": "status",
         "type": "bool"
       }
     ],
     "name": "setRelock",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "slippage",
+        "type": "uint256"
+      }
+    ],
+    "name": "setUserSlippage",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1429,6 +1789,26 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "starfleetTreasury",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "toggleAutocompound",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -1440,7 +1820,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "amount",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -1456,6 +1836,13 @@
       }
     ],
     "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "unpause",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1485,16 +1872,58 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "userlist",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "contract ILockerList",
+        "internalType": "address",
         "name": "",
         "type": "address"
       }
     ],
+    "name": "userSlippage",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "vestDuration",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "withPenalty",
+        "type": "bool"
+      }
+    ],
+    "name": "vestTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -1514,36 +1943,17 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "withdrawExpiredLocksFor",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_address",
+        "name": "address_",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_limit",
+        "name": "limit_",
         "type": "uint256"
       },
       {
         "internalType": "bool",
-        "name": "_ignoreRelock",
+        "name": "isRelockAction_",
         "type": "bool"
       }
     ],
@@ -1591,7 +2001,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_user",
+        "name": "user",
         "type": "address"
       }
     ],

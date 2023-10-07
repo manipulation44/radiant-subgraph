@@ -45,6 +45,10 @@ type Locked implements UserTransaction @entity {
   isLP: Boolean!
 }
 
+type Locker @entity {
+  id: ID!
+}
+
 type Withdrawn implements UserTransaction @entity {
   id: ID!
   txHash: Bytes!

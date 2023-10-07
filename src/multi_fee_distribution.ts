@@ -2,10 +2,11 @@ import {
   Relocked as RelockedEvent,
   Locked as LockedEvent,
   Withdrawn as WithdrawEvent,
-  MultiFeeDistribution
+  MultiFeeDistribution,
+  LockerAdded,
 } from "../generated/MultiFeeDistribution/MultiFeeDistribution";
 
-import { Relocked, Locked, Withdrawn } from "../generated/schema";
+import { Relocked, Locked, Withdrawn, Locker } from "../generated/schema";
 import { loadUser } from "./entities/user";
 import { getHistoryEntityId } from "./utils";
 import { loadLpLocker } from "./entities/lpLocker";
@@ -40,8 +41,8 @@ export function handleLocked(event: LockedEvent): void {
   lockedSupply.lockedSupply = mfdContract.lockedSupply();
   lockedSupply.address = event.address.toHexString();
   lockedSupply.save();
-  
-  if(event.params.isLP){
+
+  if (event.params.isLP) {
     let lpLocker = loadLpLocker(event.params.user);
     lpLocker.lockedBalance = event.params.lockedBalance;
     lpLocker.save();
@@ -60,6 +61,32 @@ export function handleLocked(event: LockedEvent): void {
   entity.save();
 }
 
+export function handleLockerAdded(event: LockerAdded): void {
+  let locker = new Locker(event.params.locker.toHexString());
+  locker.save();
+
+  // let user = loadUser(event.params.user);
+  // let lockedSupply = loadLockedSupply();
+  // let mfdContract = MultiFeeDistribution.bind(event.address);
+  // lockedSupply.lockedSupply = mfdContract.lockedSupply();
+  // lockedSupply.address = event.address.toHexString();
+  // lockedSupply.save();
+  // if(event.params.isLP){
+  //   let lpLocker = loadLpLocker(event.params.user);
+  //   lpLocker.lockedBalance = event.params.lockedBalance;
+  //   lpLocker.save();
+  // }
+  // let entity = new Locked(getHistoryEntityId(event));
+  // entity.txHash = event.transaction.hash;
+  // entity.action = "Locked";
+  // entity.user = user.id;
+  // entity.timestamp = event.block.timestamp.toI32();
+  // entity.amount = event.params.amount;
+  // entity.isLP = event.params.isLP;
+  // entity.lockedBalance = event.params.lockedBalance;
+  // entity.save();
+}
+
 export function handleWithdrawn(event: WithdrawEvent): void {
   let user = loadUser(event.params.user);
   let lockedSupply = loadLockedSupply();
@@ -68,8 +95,8 @@ export function handleWithdrawn(event: WithdrawEvent): void {
   lockedSupply.lockedSupply = mfdContract.lockedSupply();
   lockedSupply.address = event.address.toHexString();
   lockedSupply.save();
-  
-  if(event.params.isLP){
+
+  if (event.params.isLP) {
     let lpLocker = loadLpLocker(event.params.user);
     lpLocker.lockedBalance = event.params.lockedBalance;
     lpLocker.save();
