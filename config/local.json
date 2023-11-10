@@ -1,0 +1,21 @@
+{
+  "network": "31337",
+  "multi_fee_distribution_address": "0x1c85638e118b37167e9298c2268758e058DdfDA0",
+  "chef_incentives_controller_address": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
+  "middle_fee_distribution_address": "0x4C2F7092C2aE51D986bEFEe378e50BD4dB99C901",
+  "lending_pool_address": "0x55652FF92Dc17a21AD6810Cce2F4703fa2339CAE",
+  "bal_address": "0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d",
+  "bal_reward_address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "multi_fee_distribution_start_block": 1,
+  "chef_incentives_controller_start_block": 1,
+  "middle_fee_distribution_start_block": 1,
+  "lending_pool_start_block": 1,
+  "asset_symbols": ["USDC", "USDT", "DAI", "WBTC", "ETH"],
+  "rToken_addresses": [
+    "0x7D272174D975Ac3A4436aB9A30C61e4ce92E7384",
+    "0xdC5EFc8D12F514DA9479FF4770f22dd5dBC4024f",
+    "0x43ABE70e0F23c2ab2C935Dd3ac557A6152f9D5f5",
+    "0x8d41203eCc925878e7F34A98e3DB0DeDF3E853db",
+    "0x0793961c68928FE08601F7eB95F3C91b7D215F1F"
+  ]
+}

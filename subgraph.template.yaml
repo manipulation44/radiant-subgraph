@@ -19,16 +19,17 @@ dataSources:
         - Relocked
         - Locked
         - Withdrawn
+        - Locker
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
       eventHandlers:
         - event: Relocked(indexed address,uint256,uint256)
           handler: handleRelocked
-        - event: Locked(indexed address,uint256,uint256,bool)
-          handler: handleLocked
         - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
           handler: handleWithdrawn
+        - event: LockerAdded(indexed address)
+          handler: handleLockerAdded
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
@@ -48,7 +49,7 @@ dataSources:
         - name: ChefIncentivesController
           file: ./abis/ChefIncentivesController.json
       eventHandlers:
-        - event: Disqualified(indexed address,uint256)
+        - event: Disqualified(indexed address)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
 
@@ -96,3 +97,44 @@ dataSources:
         - event: Withdraw(indexed address,indexed address,indexed address,uint256)
           handler: handleWithdraw
       file: ./src/lending_pool.ts
+
+  - kind: ethereum/contract
+    name: StandardArbERC20
+    network: "{{ network }}"
+    source:
+      address: "{{ bal_address }}"
+      abi: StandardArbERC20
+      startBlock: {{ lending_pool_start_block }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: StandardArbERC20
+          file: ./abis/StandardArbERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/standard_arb_erc20.ts
+
+  - kind: ethereum/contract
+    name: PriceProvider
+    network: "{{ network }}"
+    source:
+      address: "{{ price_provider_address }}"
+      abi: PriceProvider
+      startBlock: {{ price_provider_start_block }}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LpTokenPrice
+      abis:
+        - name: PriceProvider
+          file: ./abis/PriceProvider.json
+      blockHandlers:
+        - handler: getLpTokenPrice
+      file: ./src/price_provider.ts

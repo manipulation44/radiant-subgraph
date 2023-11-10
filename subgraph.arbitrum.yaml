@@ -48,7 +48,7 @@ dataSources:
         - name: ChefIncentivesController
           file: ./abis/ChefIncentivesController.json
       eventHandlers:
-        - event: Disqualified(indexed address,uint256)
+        - event: Disqualified(indexed address)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
 
@@ -72,3 +72,68 @@ dataSources:
         - event: NewTransferAdded(indexed address,uint256)
           handler: handleNewTransferAdded
       file: ./src/middle_fee_distribution.ts
+    
+  - kind: ethereum/contract
+    name: LendingPool
+    network: "arbitrum-one"
+    source:
+      address: "0xF4B1486DD74D07706052A33d31d7c0AAFD0659E1"
+      abi: LendingPool
+      startBlock: 71246451
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdraw
+      abis:
+        - name: LendingPool
+          file: ./abis/LendingPool.json
+      eventHandlers:
+        - event: Deposit(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/lending_pool.ts
+
+  - kind: ethereum/contract
+    name: StandardArbERC20
+    network: "arbitrum-one"
+    source:
+      address: "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8"
+      abi: StandardArbERC20
+      startBlock: 71246451
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: StandardArbERC20
+          file: ./abis/StandardArbERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/standard_arb_erc20.ts
+
+  - kind: ethereum/contract
+    name: PriceProvider
+    network: "arbitrum-one"
+    source:
+      address: "0x76663727c39Dd46Fed5414d6801c4E8890df85cF"
+      abi: PriceProvider
+      startBlock: 91788795
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - LpTokenPrice
+      abis:
+        - name: PriceProvider
+          file: ./abis/PriceProvider.json
+      blockHandlers:
+        - handler: getLpTokenPrice
+      file: ./src/price_provider.ts

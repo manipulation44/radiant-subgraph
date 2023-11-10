@@ -8,39 +8,36 @@ dataSources:
     name: MultiFeeDistribution
     network: "31337"
     source:
-      address: "0x0bF7dE8d71820840063D4B8653Fd3F0618986faF"
+      address: "0x1c85638e118b37167e9298c2268758e058DdfDA0"
       abi: MultiFeeDistribution
-      startBlock: 3798
+      startBlock: 1
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Compounded
         - Relocked
-        - ExpiredLocksRemoved
         - Locked
+        - Withdrawn
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
       eventHandlers:
-        - event: Compounded(indexed address,uint256)
-          handler: handleCompounded
         - event: Relocked(indexed address,uint256,uint256)
           handler: handleRelocked
-        - event: ExpiredLocksRemoved(indexed address,uint256,uint256)
-          handler: handleExpiredLocksRemoved
-        - event: Locked(indexed address,uint256,bool)
+        - event: Locked(indexed address,uint256,uint256,bool)
           handler: handleLocked
+        - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
+          handler: handleWithdrawn
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
     name: ChefIncentivesController
     network: "31337"
     source:
-      address: "0x021DBfF4A864Aa25c51F0ad2Cd73266Fde66199d"
+      address: "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3"
       abi: ChefIncentivesController
-      startBlock: 3814
+      startBlock: 1
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -51,17 +48,17 @@ dataSources:
         - name: ChefIncentivesController
           file: ./abis/ChefIncentivesController.json
       eventHandlers:
-        - event: Disqualified(indexed address,uint256)
+        - event: Disqualified(indexed address)
           handler: handleDisqualified
       file: ./src/chef_incentives_controller.ts
 
   - kind: ethereum/contract
-    name: MFDstats
+    name: MiddleFeeDistribution
     network: "31337"
     source:
-      address: "0x0c03eCB91Cb50835e560a7D52190EB1a5ffba797"
-      abi: MFDstats
-      startBlock: 3789
+      address: "0x4C2F7092C2aE51D986bEFEe378e50BD4dB99C901"
+      abi: MiddleFeeDistribution
+      startBlock: 1
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -69,9 +66,54 @@ dataSources:
       entities:
         - NewTransferAdded
       abis:
-        - name: MFDstats
-          file: ./abis/MFDstats.json
+        - name: MiddleFeeDistribution
+          file: ./abis/MiddleFeeDistribution.json
       eventHandlers:
-        - event: NewTransferAdded(address,uint256,uint256)
+        - event: NewTransferAdded(indexed address,uint256)
           handler: handleNewTransferAdded
-      file: ./src/mfd_stats.ts
+      file: ./src/middle_fee_distribution.ts
+    
+  - kind: ethereum/contract
+    name: LendingPool
+    network: "31337"
+    source:
+      address: "0x55652FF92Dc17a21AD6810Cce2F4703fa2339CAE"
+      abi: LendingPool
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdraw
+      abis:
+        - name: LendingPool
+          file: ./abis/LendingPool.json
+      eventHandlers:
+        - event: Deposit(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdraw
+      file: ./src/lending_pool.ts
+
+  - kind: ethereum/contract
+    name: StandardArbERC20
+    network: "31337"
+    source:
+      address: "0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d"
+      abi: StandardArbERC20
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+      abis:
+        - name: StandardArbERC20
+          file: ./abis/StandardArbERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/standard_arb_erc20.ts

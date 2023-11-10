@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: MultiFeeDistribution
-    network: "bsc"
+    network: "sepolia"
     source:
-      address: "0x4FD9F7C5ca0829A656561486baDA018505dfcB5E"
+      address: "0x16feBa2fFDaA1E5d894A06F6406adb7918CDA113"
       abi: MultiFeeDistribution
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -19,25 +19,26 @@ dataSources:
         - Relocked
         - Locked
         - Withdrawn
+        - Locker
       abis:
         - name: MultiFeeDistribution
           file: ./abis/MultiFeeDistribution.json
       eventHandlers:
         - event: Relocked(indexed address,uint256,uint256)
           handler: handleRelocked
-        - event: Locked(indexed address,uint256,uint256,bool)
-          handler: handleLocked
         - event: Withdrawn(indexed address,uint256,uint256,uint256,uint256,bool)
           handler: handleWithdrawn
+        - event: LockerAdded(indexed address)
+          handler: handleLockerAdded
       file: ./src/multi_fee_distribution.ts
 
   - kind: ethereum/contract
     name: ChefIncentivesController
-    network: "bsc"
+    network: "sepolia"
     source:
-      address: "0x7C16aBb090d3FB266E9d17F60174B632f4229933"
+      address: "0x9987A5778A4400dc81817c47A0316f38226967Da"
       abi: ChefIncentivesController
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -54,11 +55,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: MiddleFeeDistribution
-    network: "bsc"
+    network: "sepolia"
     source:
-      address: "0xcebdff400A23E5Ad1CDeB11AfdD0087d5E9dFed8"
+      address: "0x19514D07dF94ab7e0922d4DE8e2f9c285c64Fc8C"
       abi: MiddleFeeDistribution
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -75,11 +76,11 @@ dataSources:
     
   - kind: ethereum/contract
     name: LendingPool
-    network: "bsc"
+    network: "sepolia"
     source:
-      address: "0xd50Cf00b6e600Dd036Ba8eF475677d816d6c4281"
+      address: "0x60bc735398104Db8490aED0c322Dfb66D32F06F1"
       abi: LendingPool
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -99,11 +100,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: StandardArbERC20
-    network: "bsc"
+    network: "sepolia"
     source:
       address: "0x0000000000000000000000000000000000000000"
       abi: StandardArbERC20
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -120,11 +121,11 @@ dataSources:
 
   - kind: ethereum/contract
     name: PriceProvider
-    network: "bsc"
+    network: "sepolia"
     source:
-      address: "0xfBA3335f443C1351aA7173F23767b6A9c94ac855"
+      address: "0xF8459A97989c94335c7a14D4570e3274363aB85b"
       abi: PriceProvider
-      startBlock: 28281351
+      startBlock: 4443334
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

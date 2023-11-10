@@ -7,119 +7,216 @@ enum Action {
 }
 
 interface UserTransaction {
+  "Unique identifier for the transaction."
   id: ID!
+  "Hash of the transaction."
   txHash: Bytes!
+  "Action associated with the transaction."
   action: Action!
+  "User associated with the transaction."
   user: User!
+  "Timestamp of the transaction."
   timestamp: Int!
 }
 
 interface AssetTransaction {
+  "Unique identifier for the transaction."
   id: ID!
+  "Hash of the transaction."
   txHash: Bytes!
+  "Action associated with the transaction."
   action: Action!
+  "Asset associated with the transaction."
   asset: Asset!
+  "Timestamp of the transaction."
   timestamp: Int!
 }
 
-type Relocked implements UserTransaction @entity {
+type Relocked implements UserTransaction {
+  "Unique identifier for the relocked transaction."
   id: ID!
+  "Hash of the relocked transaction."
   txHash: Bytes!
+  "Action associated with the relocked transaction."
   action: Action!
+  "User associated with the relocked transaction."
   user: User!
+  "Timestamp when the relocking occurred."
   timestamp: Int!
-
+  "Amount that was relocked."
   amount: BigInt!
+  "Index of the lock."
   lockIndex: BigInt!
 }
 
-type Locked implements UserTransaction @entity {
+type Locked implements UserTransaction {
+  "Unique identifier for the locked transaction."
   id: ID!
+  "Hash of the locked transaction."
   txHash: Bytes!
+  "Action associated with the locked transaction."
   action: Action!
+  "User associated with the locked transaction."
   user: User!
+  "Timestamp when the locking occurred."
   timestamp: Int!
-
+  "Amount that was locked."
   amount: BigInt!
+  "Total balance that is locked."
   lockedBalance: BigInt!
+  "Indicates if it's a liquidity pool token."
   isLP: Boolean!
 }
 
-type Withdrawn implements UserTransaction @entity {
+type Locker {
+  "Unique identifier for the locker."
   id: ID!
-  txHash: Bytes!
-  action: Action!
-  user: User!
-  timestamp: Int!
+}
 
+type Withdrawn implements UserTransaction {
+  "Unique identifier for the withdrawn transaction."
+  id: ID!
+  "Hash of the withdrawn transaction."
+  txHash: Bytes!
+  "Action associated with the withdrawn transaction."
+  action: Action!
+  "User associated with the withdrawn transaction."
+  user: User!
+  "Timestamp when the withdrawal occurred."
+  timestamp: Int!
+  "Amount that was received upon withdrawal."
   receivedAmount: BigInt!
+  "Balance that remains locked after withdrawal."
   lockedBalance: BigInt!
+  "Penalty applied during withdrawal."
   penalty: BigInt!
+  "Amount that was burned during withdrawal."
   burn: BigInt!
+  "Indicates if it's a liquidity pool token."
   isLP: Boolean!
 }
 
-type NewTransferAdded implements AssetTransaction @entity {
+type NewTransferAdded implements AssetTransaction {
+  "Unique identifier for the new transfer added transaction."
   id: ID!
+  "Hash of the new transfer added transaction."
   txHash: Bytes!
+  "Action associated with the new transfer added transaction."
   action: Action!
+  "Asset associated with the new transfer added transaction."
   asset: Asset!
+  "Timestamp when the new transfer was added."
   timestamp: Int!
-
+  "USD value of the liquidity pool."
   lpUsdValue: BigInt!
+  "Total amount transferred."
   totalTransferred: BigInt!
-  usdcTotal: BigInt!
-  usdtTotal: BigInt!
-  daiTotal: BigInt!
-  wbtcTotal: BigInt!
-  ethTotal: BigInt!
-  glpTotal: BigInt!
-  fraxTotal: BigInt!
-  busdTotal: BigInt!
-  wethTotal: BigInt!
-  bnbTotal: BigInt!
-  btcbTotal: BigInt!
+  "List of total transferred amounts for each asset."
+  assetTotals: [AssetTotalTransferred!]
 }
 
-type Disqualified implements UserTransaction @entity {
+type Disqualified implements UserTransaction {
+  "Unique identifier for the disqualified transaction."
   id: ID!
+  "Hash of the disqualified transaction."
   txHash: Bytes!
+  "Action associated with the disqualified transaction."
   action: Action!
+  "User associated with the disqualified transaction."
   user: User!
+  "Timestamp when the disqualification occurred."
   timestamp: Int!
-
-  rewardsRemoved: BigInt!
 }
 
-type UsdTransfered @entity {
+type UsdTransfered {
+  "Unique identifier for the USD transfer."
   id: ID!
+  "Total USD value transferred in liquidity pool."
   totalLpUsdTransfered: BigInt!
 }
 
-type ReserveSize @entity {
+type LockedSupply {
+  "Unique identifier for the locked supply."
   id: ID!
+  "Total supply that is locked."
+  lockedSupply: BigInt!
+  "Address associated with the locked supply."
+  address: String
+}
+
+type LpTokenPrice {
+  "Unique identifier for the LP token price."
+  id: ID!
+  "Price of the LP token."
+  price: BigInt!
+  "Block number associated with the price."
+  blockNumber: BigInt!
+}
+
+type ReserveSize {
+  "Unique identifier for the reserve size."
+  id: ID!
+  "Amount in the reserve."
   amount: BigInt!
 }
 
-type User @entity {
+type User {
+  "Unique identifier for the user."
   id: ID!
+  "List of relocked transactions associated with the user."
   relocked: [Relocked!]! @derivedFrom(field: "user")
+  "List of disqualified transactions associated with the user."
   disqualified: [Disqualified!]! @derivedFrom(field: "user")
+  "List of locked transactions associated with the user."
   locked: [Locked!]! @derivedFrom(field: "user")
+  "List of withdrawn transactions associated with the user."
   withdrawn: [Withdrawn!]! @derivedFrom(field: "user")
 }
 
-type Asset @entity {
+type Asset {
+  "Unique identifier for the asset."
   id: ID!
+  "List of new transfer added transactions associated with the asset."
   newTransferAdded: [NewTransferAdded!]! @derivedFrom(field: "asset")
 }
 
-type LpLocker @entity {
+type LpLocker {
+  "Unique identifier for the LP locker."
   id: ID!
+  "Total balance that is locked in the LP locker."
   lockedBalance: BigInt!
 }
 
-type TotalTransferred @entity {
+type TotalTransferred {
+  "Unique identifier for the total transferred."
   id: ID!
+  "Total amount transferred."
   totalTransferred: BigInt!
+}
+
+type AssetTotalTransferred {
+  "Unique identifier for the asset total transferred."
+  id: ID!
+  "Symbol of the asset."
+  symbol: String!
+  "Total amount transferred for the asset."
+  totalTransferred: BigInt!
+}
+
+type BalTransferred {
+  "Unique identifier for the balance transferred."
+  id: ID!
+  "Amount that was transferred."
+  amount: BigInt!
+}
+
+type NewBalTransfer {
+  "Unique identifier for the new balance transfer."
+  id: ID!
+  "Amount of the new balance transfer."
+  amount: BigInt!
+  "Total amount after the new balance transfer."
+  total: BigInt!
+  "Timestamp of the new balance transfer."
+  timestamp: Int!
 }

@@ -1,0 +1,22 @@
+{
+  "network": "sepolia",
+  "multi_fee_distribution_address": "0x16feBa2fFDaA1E5d894A06F6406adb7918CDA113",
+  "chef_incentives_controller_address": "0x9987A5778A4400dc81817c47A0316f38226967Da",
+  "middle_fee_distribution_address": "0x19514D07dF94ab7e0922d4DE8e2f9c285c64Fc8C",
+  "lending_pool_address": "0x60bc735398104Db8490aED0c322Dfb66D32F06F1",
+  "price_provider_address": "0xF8459A97989c94335c7a14D4570e3274363aB85b",
+  "bal_address": "0x0000000000000000000000000000000000000000",
+  "bal_reward_address": "0x0000000000000000000000000000000000000000",
+  "multi_fee_distribution_start_block": 4443334,
+  "chef_incentives_controller_start_block": 4443334,
+  "middle_fee_distribution_start_block": 4443334,
+  "lending_pool_start_block": 4443334,
+  "price_provider_start_block": 4443334,
+  "asset_symbols": ["USDT", "USDC", "DAI", "ETH"],
+  "rToken_addresses": [
+    "0xd131A32F106604D01dF6BBEA6bC0BA335007d304",
+    "0x02F53b783413052fB6D5ee3114D342534F1e27dA",
+    "0x87516191006FA577B584e0388F9be7E451f7B68D",
+    "0x2A3251B35C1d768660bE7D8faB1ED75E4Fb9E0f6"
+  ]
+}
